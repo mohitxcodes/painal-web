@@ -7,11 +7,10 @@ const GallerySection = () => {
     const [activeCategory, setActiveCategory] = useState('All');
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
-
     const galleryImages = [
         {
             id: 1,
-            url: 'https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000',
+            url: 'https://media.istockphoto.com/id/468861698/photo/life-in-rural-india.jpg?s=612x612&w=0&k=20&c=tL_-l5aiDO8Liwke7xoRP_tUGUaPlKtzajAJJi4Dxww=',
             title: 'Village Life',
             hindiTitle: 'ग्रामीण जीवन',
             description: 'Traditional village homes and peaceful surroundings',
@@ -28,7 +27,7 @@ const GallerySection = () => {
         },
         {
             id: 2,
-            url: 'https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000',
+            url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtR0vFxVIg3EFfPVZengMLLMfXSe5pN8hWiw&s',
             title: 'Agriculture',
             hindiTitle: 'कृषि',
             description: 'Rich agricultural fields and farming traditions',
@@ -45,7 +44,7 @@ const GallerySection = () => {
         },
         {
             id: 3,
-            url: 'https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000',
+            url: 'https://content3.jdmagicbox.com/comp/patna/j2/0612px612.x612.220609000701.i6j2/catalogue/panchwati-bhawan-bihta-patna-car-rental-31qs8t1yn9.jpg',
             title: 'Community',
             hindiTitle: 'समुदाय',
             description: 'Vibrant community gatherings and cultural events',
@@ -62,7 +61,7 @@ const GallerySection = () => {
         },
         {
             id: 4,
-            url: 'https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000',
+            url: 'https://content.jdmagicbox.com/comp/patna/z8/0612px612.x612.200106154958.w8z8/catalogue/amrit-bihar-restaurant-patna-dmip6nfvbw.jpg',
             title: 'Festivals',
             hindiTitle: 'त्योहार',
             description: 'Colorful celebrations and cultural heritage',
@@ -79,7 +78,7 @@ const GallerySection = () => {
         },
         {
             id: 5,
-            url: 'https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000',
+            url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtJierQGHES49XgSZ0vye_C8xV6KqriT5W6g&s',
             title: 'Nature',
             hindiTitle: 'प्रकृति',
             description: 'Beautiful landscapes and natural beauty',
@@ -96,7 +95,7 @@ const GallerySection = () => {
         },
         {
             id: 7,
-            url: 'https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000',
+            url: 'https://bsmedia.business-standard.com/_media/bs/img/misc/2020-07/26/full/20200725107L.jpg?im=FeatureCrop,size=(826,465)',
             title: 'Village Market',
             hindiTitle: 'ग्रामीण बाजार',
             description: 'Local market and daily commerce',
@@ -113,7 +112,7 @@ const GallerySection = () => {
         },
         {
             id: 8,
-            url: 'https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000',
+            url: 'https://images.deccanherald.com/deccanherald%2Fimport%2Fsites%2Fdh%2Ffiles%2Farticleimages%2F2020%2F07%2F25%2FBihar%20flood-1595698728.jpg?auto=format%2Ccompress&fmt=webp&fit=max&format=webp&q=70&w=160&dpr=2',
             title: 'Traditional Crafts',
             hindiTitle: 'पारंपरिक शिल्प',
             description: 'Artisans and their crafts',
@@ -130,7 +129,7 @@ const GallerySection = () => {
         },
         {
             id: 9,
-            url: 'https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000',
+            url: 'https://www.smsfoundation.org/wp-content/uploads/2022/03/Punas.jpg',
             title: 'Village School',
             hindiTitle: 'ग्रामीण विद्यालय',
             description: 'Education and learning',
@@ -147,7 +146,7 @@ const GallerySection = () => {
         },
         {
             id: 10,
-            url: 'https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000',
+            url: 'https://tourism.bihar.gov.in/content/dam/bihar-tourism/images/category_c/samastipur/morwara/hindu_samastipur_cat_c_morwara_pic_1.jpg/jcr:content/renditions/cq5dam.web.480.480.jpeg',
             title: 'Seasonal Harvest',
             hindiTitle: 'मौसमी फसल',
             description: 'Bountiful harvest season celebrations',
@@ -367,12 +366,6 @@ const GallerySection = () => {
                                     </motion.div>
                                 </div>
 
-                                {/* Quick View Button */}
-                                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
-                                    <button className="p-4 rounded-full bg-white/90 backdrop-blur-sm text-gray-700 hover:bg-white transition-colors transform hover:scale-110">
-                                        <FaSearch className="text-xl" />
-                                    </button>
-                                </div>
                             </motion.div>
                         ))}
                     </motion.div>
