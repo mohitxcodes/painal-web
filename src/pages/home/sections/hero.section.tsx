@@ -160,7 +160,7 @@ const HeroSection = () => {
                                 whileHover={{ scale: 1.02 }}
                                 whileTap={{ scale: 0.98 }}
                             >
-                                Our History <span className="text-green-600">(हमारा इतिहास)</span>
+                                Our Ancestry <span className="text-green-600">(हमारा वंशावली)</span>
                             </motion.button>
                         </motion.div>
                     </motion.div>

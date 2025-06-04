@@ -6,7 +6,7 @@ export const Header = () => {
 
     const navLinks = [
         { name: 'Home', hindiName: 'होम', href: '/' },
-        { name: 'History', hindiName: 'इतिहास', href: '/history' },
+        { name: 'Ancestry', hindiName: 'वंशावली', href: '/ancestry' },
         { name: 'Gallery', hindiName: 'गैलरी', href: '/gallery' },
     ];
 

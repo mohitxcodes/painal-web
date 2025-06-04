@@ -1,12 +1,12 @@
-import AboutSection from "./sections/about.section";
-import GallarySection from "./sections/Gallary.section";
-import HeroSection from "./sections/hero.section";
+import AboutSection from "./sections/About.section";
+import GallerySection from "./sections/Gallery.section";
+import HeroSection from "./sections/Hero.section";
 export const HomePage = () => {
     return (
         <div>
             <HeroSection />
             <AboutSection />
-            <GallarySection />
+            <GallerySection />
         </div>
     );
 };
