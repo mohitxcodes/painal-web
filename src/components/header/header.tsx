@@ -5,12 +5,9 @@ export const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const navLinks = [
-        { name: 'Home', href: '/' },
-        { name: 'About', href: '/about' },
-        { name: 'History', href: '/history' },
-        { name: 'Gallery', href: '/gallery' },
-        { name: 'Events', href: '/events' },
-        { name: 'Contact', href: '/contact' },
+        { name: 'Home', hindiName: 'होम', href: '/' },
+        { name: 'History', hindiName: 'इतिहास', href: '/history' },
+        { name: 'Gallery', hindiName: 'गैलरी', href: '/gallery' },
     ];
 
     return (
@@ -59,7 +56,10 @@ export const Header = () => {
                                         strokeLinejoin="round"
                                     />
                                 </svg>
-                                <span className="text-xl font-bold text-gray-800">Painal</span>
+                                <div className="flex flex-col">
+                                    <span className="text-xl font-bold text-gray-800">Painal</span>
+                                    <span className="text-xs text-green-600">पैनल गांव</span>
+                                </div>
                             </a>
                         </div>
 
@@ -69,9 +69,10 @@ export const Header = () => {
                                 <a
                                     key={link.name}
                                     href={link.href}
-                                    className="text-gray-700 hover:text-green-600 transition-colors text-sm font-medium"
+                                    className="text-gray-700 hover:text-green-600 transition-colors text-sm font-medium flex flex-col items-center"
                                 >
-                                    {link.name}
+                                    <span>{link.name}</span>
+                                    <span className="text-xs text-green-600">{link.hindiName}</span>
                                 </a>
                             ))}
                         </nav>
@@ -115,10 +116,11 @@ export const Header = () => {
                                         <a
                                             key={link.name}
                                             href={link.href}
-                                            className="text-gray-700 hover:text-green-600 transition-colors text-sm font-medium py-2"
+                                            className="text-gray-700 hover:text-green-600 transition-colors text-sm font-medium py-2 flex flex-col"
                                             onClick={() => setIsMenuOpen(false)}
                                         >
-                                            {link.name}
+                                            <span>{link.name}</span>
+                                            <span className="text-xs text-green-600">{link.hindiName}</span>
                                         </a>
                                     ))}
                                 </nav>
