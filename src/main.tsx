@@ -19,12 +19,13 @@ const router = createBrowserRouter([
         path: '/gallery',
         element: <GallerySection />,
       },
+      {
+        path: '/ancestry',
+        element: <AncestryPage />,
+      }
     ],
   },
-  {
-    path: '/ancestry',
-    element: <AncestryPage />,
-  }
+
 
 ])
 
