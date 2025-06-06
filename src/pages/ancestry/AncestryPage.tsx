@@ -2,12 +2,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useRef, useEffect } from 'react';
 import { FaUsers, FaSearch, FaChevronDown, FaChevronRight, FaInfoCircle, FaHome, FaUserFriends, FaMapMarkerAlt, FaFilter, FaTimes, FaHeart, FaShare, FaDownload, FaPrint, FaUser, FaCalendarAlt, FaBriefcase, FaChild } from 'react-icons/fa';
 import { AnimatedBackground } from '../../components/common/AnimatedBackground';
-import { familyData } from '../../data/VillageMemberData';
 import { IVillageMember } from '../../interface/IVillageMember';
-
-
-// Updated family data with more complex relationships
-
 
 const AncestryPage = () => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -21,7 +16,23 @@ const AncestryPage = () => {
         occupation: 'all',
         birthYearRange: [1940, 2022]
     });
+    const [familyData, setFamilyData] = useState<IVillageMember[]>([]);
+    const [familyTitle, setFamilyTitle] = useState({ english: '', hindi: '' });
     const nodeRefs = useRef<{ [key: number]: HTMLDivElement | null }>({});
+
+    useEffect(() => {
+        // Get family data from localStorage
+        const storedFamilyData = localStorage.getItem('selectedFamilyData');
+        const storedFamilyTitle = localStorage.getItem('selectedFamilyTitle');
+
+        if (storedFamilyData) {
+            setFamilyData(JSON.parse(storedFamilyData));
+        }
+
+        if (storedFamilyTitle) {
+            setFamilyTitle(JSON.parse(storedFamilyTitle));
+        }
+    }, []);
 
     // Enhanced search with multiple criteria
     const filteredFamilyData = familyData.filter(member => {
@@ -35,7 +46,6 @@ const AncestryPage = () => {
 
         const matchesOccupation = filters.occupation === 'all' ||
             member.occupation?.toLowerCase() === filters.occupation.toLowerCase();
-
 
         return matchesSearch && matchesGeneration && matchesOccupation;
     });
@@ -398,48 +408,13 @@ const AncestryPage = () => {
                             >
                                 <FaInfoCircle className="text-emerald-600 text-xl" />
                             </button>
-                            <button
-                                onClick={() => setShowFilters(!showFilters)}
-                                className="p-2 rounded-full hover:bg-white/50 transition-colors"
-                                title="Filters"
-                            >
-                                <FaFilter className="text-emerald-600 text-xl" />
-                            </button>
                         </div>
                         <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent mb-2">
-                            Village Family Tree
+                            {familyTitle.english || 'Family Tree'}
                         </h1>
                         <h2 className="text-2xl md:text-3xl text-emerald-600 mb-8">
-                            गांव का वंशवृक्ष
+                            {familyTitle.hindi || 'वंशवृक्ष'}
                         </h2>
-
-                        {/* Enhanced Quick Navigation */}
-                        <div className="flex justify-center space-x-4 mb-8">
-                            <motion.a
-                                href="/"
-                                className="flex items-center space-x-2 px-4 py-2 bg-white/90 backdrop-blur-sm rounded-lg hover:bg-white transition-all shadow-sm hover:shadow-md border border-green-200/50 hover:border-green-300/50"
-                                whileHover={{ y: -2 }}
-                            >
-                                <FaHome className="text-emerald-600" />
-                                <span>Home</span>
-                            </motion.a>
-                            <motion.a
-                                href="/gallery"
-                                className="flex items-center space-x-2 px-4 py-2 bg-white/90 backdrop-blur-sm rounded-lg hover:bg-white transition-all shadow-sm hover:shadow-md border border-green-200/50 hover:border-green-300/50"
-                                whileHover={{ y: -2 }}
-                            >
-                                <FaUserFriends className="text-emerald-600" />
-                                <span>Gallery</span>
-                            </motion.a>
-                            <motion.a
-                                href="/map"
-                                className="flex items-center space-x-2 px-4 py-2 bg-white/90 backdrop-blur-sm rounded-lg hover:bg-white transition-all shadow-sm hover:shadow-md border border-green-200/50 hover:border-green-300/50"
-                                whileHover={{ y: -2 }}
-                            >
-                                <FaMapMarkerAlt className="text-emerald-600" />
-                                <span>Map</span>
-                            </motion.a>
-                        </div>
                     </div>
 
                     {/* Enhanced Search and Filters */}

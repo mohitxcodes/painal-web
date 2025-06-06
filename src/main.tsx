@@ -3,9 +3,10 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import GallerySection from './pages/home/sections/Gallery.section'
+import GalleryPage from './pages/gallery/GalleryPage.tsx'
 import { HomePage } from './pages/home/Home.page'
 import AncestryPage from './pages/ancestry/AncestryPage.tsx'
+import FamilyTree from './pages/family-tree/FamilyTree.tsx'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -17,11 +18,15 @@ const router = createBrowserRouter([
       },
       {
         path: '/gallery',
-        element: <GallerySection />,
+        element: <GalleryPage />,
       },
       {
         path: '/ancestry',
         element: <AncestryPage />,
+      },
+      {
+        path: '/family-tree',
+        element: <FamilyTree />
       }
     ],
   },
