@@ -1,189 +1,138 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { FaUsers, FaSearch, FaHome, FaUserFriends, FaHeart, FaShare, FaChild, FaCalendarAlt, FaBriefcase } from 'react-icons/fa';
+import { FaUsers, FaSearch, FaHome, FaUserFriends, FaHeart, FaShare, FaChild, FaUser, FaUserPlus } from 'react-icons/fa';
 import { AnimatedBackground } from '../../components/common/AnimatedBackground';
 import { useNavigate } from 'react-router-dom';
-import { IVillageMember } from '../../interface/IVillageMember';
+import { families } from '../../data/FamilyMemberData.ts'
 
 const FamilyTree = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const navigate = useNavigate();
 
-    // Sample family data with dummy family members
-    const families = [
-        {
-            id: 1,
-            name: "Mohit's Family",
-            hindiName: "मोहित का परिवार",
-            head: "Ram Kumar Singh",
-            headHindi: "राम कुमार सिंह",
-            children: 4,
-            birthYear: 1965,
-            occupation: "Farmer",
-            occupationHindi: "किसान",
-            familyMembers: [
-                {
-                    id: 101,
-                    name: "Ram Kumar Singh",
-                    hindiName: "राम कुमार सिंह",
-                    birthYear: 1965,
-                    children: [102, 103, 104, 105],
-                    spouse: "Lakshmi Devi",
-                    spouseHindiName: "लक्ष्मी देवी",
-                    occupation: "Farmer",
-                    occupationHindi: "किसान",
-                    profilePhoto: "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
-                },
-                {
-                    id: 102,
-                    name: "Rahul Singh",
-                    hindiName: "राहुल सिंह",
-                    birthYear: 1990,
-                    parentId: 101,
-                    children: [],
-                    spouse: "Priya Singh",
-                    spouseHindiName: "प्रिया सिंह",
-                    occupation: "Engineer",
-                    occupationHindi: "इंजीनियर",
-                    profilePhoto: "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
-                },
-                {
-                    id: 103,
-                    name: "Rohit Singh",
-                    hindiName: "रोहित सिंह",
-                    birthYear: 1992,
-                    parentId: 101,
-                    children: [],
-                    spouse: "Neha Singh",
-                    spouseHindiName: "नेहा सिंह",
-                    occupation: "Doctor",
-                    occupationHindi: "डॉक्टर",
-                    profilePhoto: "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
-                },
-                {
-                    id: 104,
-                    name: "Riya Singh",
-                    hindiName: "रिया सिंह",
-                    birthYear: 1995,
-                    parentId: 101,
-                    children: [],
-                    spouse: "Amit Kumar",
-                    spouseHindiName: "अमित कुमार",
-                    occupation: "Teacher",
-                    occupationHindi: "शिक्षक",
-                    profilePhoto: "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
-                },
-                {
-                    id: 105,
-                    name: "Ritika Singh",
-                    hindiName: "रितिका सिंह",
-                    birthYear: 1998,
-                    parentId: 101,
-                    children: [],
-                    spouse: "Vikram Singh",
-                    spouseHindiName: "विक्रम सिंह",
-                    occupation: "Student",
-                    occupationHindi: "छात्र",
-                    profilePhoto: "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
-                }
-            ] as IVillageMember[]
-        },
-        {
-            id: 2,
-            name: "Ravi's Family",
-            hindiName: "मोहित का परिवार",
-            head: "Ram Kumar Singh",
-            headHindi: "राम कुमार सिंह",
-            children: 4,
-            birthYear: 1965,
-            occupation: "Farmer",
-            occupationHindi: "किसान",
-            familyMembers: [
-                {
-                    id: 101,
-                    name: "ravi kumar Kumar Singh",
-                    hindiName: "राम कुमार सिंह",
-                    birthYear: 1965,
-                    children: [102, 103, 104, 105],
-                    spouse: "Lakshmi Devi",
-                    spouseHindiName: "लक्ष्मी देवी",
-                    occupation: "Farmer",
-                    occupationHindi: "किसान",
-                    profilePhoto: "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
-                },
-                {
-                    id: 102,
-                    name: "Rahul Singh",
-                    hindiName: "राहुल सिंह",
-                    birthYear: 1990,
-                    parentId: 101,
-                    children: [],
-                    spouse: "Priya Singh",
-                    spouseHindiName: "प्रिया सिंह",
-                    occupation: "Engineer",
-                    occupationHindi: "इंजीनियर",
-                    profilePhoto: "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
-                },
-                {
-                    id: 103,
-                    name: "Rohit Singh",
-                    hindiName: "रोहित सिंह",
-                    birthYear: 1992,
-                    parentId: 101,
-                    children: [],
-                    spouse: "Neha Singh",
-                    spouseHindiName: "नेहा सिंह",
-                    occupation: "Doctor",
-                    occupationHindi: "डॉक्टर",
-                    profilePhoto: "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
-                },
-                {
-                    id: 104,
-                    name: "Riya Singh",
-                    hindiName: "रिया सिंह",
-                    birthYear: 1995,
-                    parentId: 101,
-                    children: [],
-                    spouse: "Amit Kumar",
-                    spouseHindiName: "अमित कुमार",
-                    occupation: "Teacher",
-                    occupationHindi: "शिक्षक",
-                    profilePhoto: "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
-                },
-                {
-                    id: 105,
-                    name: "Ritika Singh",
-                    hindiName: "रितिका सिंह",
-                    birthYear: 1998,
-                    parentId: 101,
-                    children: [],
-                    spouse: "Vikram Singh",
-                    spouseHindiName: "विक्रम सिंह",
-                    occupation: "Student",
-                    occupationHindi: "छात्र",
-                    profilePhoto: "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
-                }
-            ] as IVillageMember[]
-        },
-    ];
+    // Helper function to find a family member by ID
+    const findFamilyMember = (family: typeof families[0], memberId: number) => {
+        return family.familyMembers.find(member => member.id === memberId);
+    };
 
     // Filter families based on search term
-    const filteredFamilies = families.filter(family =>
-        !searchTerm ||
-        family.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        family.head.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    const filteredFamilies = families.filter(family => {
+        // If no search term, show all families
+        if (!searchTerm) return true;
+
+        // Check if family name or head matches
+        const familyNameMatch = family.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            family.head.toLowerCase().includes(searchTerm.toLowerCase());
+
+        // Check if any family member's name matches
+        const familyMemberMatch = family.familyMembers.some(member =>
+            member.name.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+
+        return familyNameMatch || familyMemberMatch;
+    });
 
     const handleFamilyClick = (family: typeof families[0]) => {
         // Store family data in localStorage
         localStorage.setItem('selectedFamilyData', JSON.stringify(family.familyMembers));
         localStorage.setItem('selectedFamilyTitle', JSON.stringify({
             english: family.name,
-            hindi: family.hindiName
         }));
+
+        // Store the current search term if it exists
+        if (searchTerm) {
+            localStorage.setItem('ancestrySearchTerm', searchTerm);
+        }
 
         // Navigate to ancestry page
         navigate('/ancestry');
+    };
+
+    // Render family member details
+    const renderFamilyMemberDetails = (family: typeof families[0], member: any) => {
+        const father = member.parentId ? findFamilyMember(family, member.parentId) : null;
+        const children = member.children ? member.children.map((childId: number) => findFamilyMember(family, childId)) : [];
+
+        return (
+            <div className="mt-2 p-4 bg-white/80 rounded-xl border border-green-100 shadow-sm hover:shadow-md transition-all duration-300">
+                <div className="flex flex-col sm:flex-row items-start gap-4">
+                    {/* Profile Section */}
+                    <div className="flex-shrink-0 mx-auto sm:mx-0">
+                        <div className="w-16 h-16 rounded-full bg-gradient-to-br from-emerald-50 to-green-50 flex items-center justify-center border-2 border-emerald-100">
+                            <FaUser className="text-2xl text-emerald-600" />
+                        </div>
+                    </div>
+
+                    {/* Details Section */}
+                    <div className="flex-1 min-w-0 w-full">
+                        {/* Name and Basic Info */}
+                        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                            <div className="flex-1 min-w-0">
+                                <h4 className="text-lg font-semibold text-gray-800 truncate">{member.name}</h4>
+                                <p className="text-sm text-emerald-600 truncate">{member.hindiName}</p>
+                            </div>
+                            {member.birthYear && member.birthYear !== "Unavailable" && (
+                                <span className="px-3 py-1 bg-emerald-50 text-emerald-700 rounded-full text-sm whitespace-nowrap">
+                                    Born: {member.birthYear}
+                                </span>
+                            )}
+                        </div>
+
+                        {/* Occupation */}
+                        {member.occupation && member.occupation !== "Unavailable" && (
+                            <div className="mt-2 flex flex-wrap items-center gap-2">
+                                <span className="px-3 py-1 bg-gray-50 text-gray-700 rounded-full text-sm whitespace-nowrap">
+                                    {member.occupation}
+                                </span>
+                                {member.occupationHindi && (
+                                    <span className="text-sm text-gray-500 truncate">({member.occupationHindi})</span>
+                                )}
+                            </div>
+                        )}
+
+                        {/* Family Relationships */}
+                        <div className="mt-3 space-y-2">
+                            {/* Father's Information */}
+                            {father && (
+                                <div className="flex items-start gap-2 p-2 bg-emerald-50/50 rounded-lg">
+                                    <FaUserPlus className="text-emerald-600 flex-shrink-0 mt-1" />
+                                    <div className="min-w-0">
+                                        <span className="text-sm text-gray-600">Father: </span>
+                                        <span className="text-sm font-medium text-emerald-700 truncate">{father.name}</span>
+                                        <span className="text-sm text-emerald-600 truncate"> ({father.hindiName})</span>
+                                    </div>
+                                </div>
+                            )}
+
+                            {/* Children's Information */}
+                            {children.length > 0 && (
+                                <div className="p-2 bg-emerald-50/50 rounded-lg">
+                                    <div className="flex items-center gap-2 mb-2">
+                                        <FaChild className="text-emerald-600 flex-shrink-0" />
+                                        <span className="text-sm font-medium text-gray-700">Children:</span>
+                                    </div>
+                                    <div className="ml-6">
+                                        <div className="flex flex-wrap gap-2">
+                                            {children.map((child: any) => (
+                                                <div
+                                                    key={child.id}
+                                                    className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white/80 rounded-lg border border-emerald-100/50 hover:border-emerald-200/50 transition-colors"
+                                                >
+                                                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></div>
+                                                    <div className="flex flex-col">
+                                                        <span className="text-sm font-medium text-emerald-700 leading-tight">{child.name}</span>
+                                                        <span className="text-xs text-emerald-600 leading-tight">{child.hindiName}</span>
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
     };
 
     return (
@@ -236,7 +185,7 @@ const FamilyTree = () => {
                         <div className="relative w-full max-w-md">
                             <input
                                 type="text"
-                                placeholder="Search families..."
+                                placeholder="Search families or family members..."
                                 className="w-full px-4 py-3 pl-10 rounded-xl border border-green-200/50 focus:outline-none focus:ring-2 focus:ring-emerald-500 shadow-sm bg-white/90 backdrop-blur-sm"
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
@@ -256,55 +205,85 @@ const FamilyTree = () => {
                                 className="bg-gradient-to-br from-white to-green-50/80 backdrop-blur-sm rounded-xl p-4 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer border-2 border-green-200/50 hover:border-green-300/50"
                                 onClick={() => handleFamilyClick(family)}
                             >
-                                <div className="flex items-center gap-4">
-                                    {/* Family Avatar */}
-                                    <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-green-200/50 flex-shrink-0">
-                                        <div className="w-full h-full bg-gradient-to-br from-green-50 to-emerald-50 flex items-center justify-center">
-                                            <FaUsers className="text-2xl text-green-600" />
-                                        </div>
-                                    </div>
-
-                                    {/* Family Info */}
-                                    <div className="flex-1 min-w-0">
-                                        <div className="flex items-center justify-between">
-                                            <div>
-                                                <h3 className="text-lg font-semibold text-gray-800">{family.name}</h3>
-                                                <p className="text-sm text-green-600">{family.hindiName}</p>
-                                            </div>
-                                            <div className="flex space-x-2">
-                                                <button
-                                                    className="p-2 text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors"
-                                                    onClick={(e) => {
-                                                        e.stopPropagation();
-                                                        // Add favorite functionality
-                                                    }}
-                                                >
-                                                    <FaHeart />
-                                                </button>
-                                                <button
-                                                    className="p-2 text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors"
-                                                    onClick={(e) => {
-                                                        e.stopPropagation();
-                                                        // Add share functionality
-                                                    }}
-                                                >
-                                                    <FaShare />
-                                                </button>
+                                <div className="flex flex-col gap-4">
+                                    {/* Family Header */}
+                                    <div className="flex items-center gap-4">
+                                        {/* Family Avatar */}
+                                        <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-green-200/50 flex-shrink-0">
+                                            <div className="w-full h-full bg-gradient-to-br from-green-50 to-emerald-50 flex items-center justify-center">
+                                                <FaUsers className="text-2xl text-green-600" />
                                             </div>
                                         </div>
 
-                                        <div className="mt-2 flex items-center gap-4">
-                                            <div className="flex items-center gap-2">
-                                                <FaUsers className="text-green-600" />
-                                                <span className="text-sm text-gray-600">{family.head}</span>
-                                                <span className="text-xs text-green-600">({family.headHindi})</span>
+                                        {/* Family Info */}
+                                        <div className="flex-1 min-w-0">
+                                            <div className="flex items-center justify-between">
+                                                <div className="min-w-0">
+                                                    <h3 className="text-lg font-semibold text-gray-800 truncate">{family.name}</h3>
+                                                    <p className="text-sm text-green-600 truncate">{family.hindiName}</p>
+                                                </div>
+                                                <div className="flex space-x-2 flex-shrink-0">
+                                                    <button
+                                                        className="p-2 text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors"
+                                                        onClick={(e) => {
+                                                            e.stopPropagation();
+                                                            // Add favorite functionality
+                                                        }}
+                                                    >
+                                                        <FaHeart />
+                                                    </button>
+                                                    <button
+                                                        className="p-2 text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors"
+                                                        onClick={(e) => {
+                                                            e.stopPropagation();
+                                                            // Add share functionality
+                                                        }}
+                                                    >
+                                                        <FaShare />
+                                                    </button>
+                                                </div>
                                             </div>
-                                            <div className="flex items-center gap-2">
-                                                <FaChild className="text-green-600" />
-                                                <span className="text-sm text-gray-600">{family.children} Children</span>
+
+                                            <div className="mt-2 flex flex-wrap items-center gap-4">
+                                                <div className="flex items-center gap-2">
+                                                    <FaUsers className="text-green-600 flex-shrink-0" />
+                                                    <span className="text-sm text-gray-600 truncate">{family.head}</span>
+                                                    <span className="text-xs text-green-600 truncate">({family.headHindi})</span>
+                                                </div>
+                                                <div className="flex items-center gap-2">
+                                                    <FaChild className="text-green-600 flex-shrink-0" />
+                                                    <span className="text-sm text-gray-600">{family.children} Children</span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
+
+                                    {/* Show matching family members if there's a search term */}
+                                    {searchTerm && family.familyMembers.some(member =>
+                                        member.name.toLowerCase().includes(searchTerm.toLowerCase())
+                                    ) && (
+                                            <div className="mt-2 space-y-3">
+                                                <div className="flex items-center gap-2">
+                                                    <div className="h-px flex-1 bg-gradient-to-r from-transparent via-emerald-200 to-transparent"></div>
+                                                    <h3 className="text-sm font-semibold text-emerald-700 px-3 py-1 bg-emerald-50 rounded-full whitespace-nowrap">
+                                                        Matching Members
+                                                    </h3>
+                                                    <div className="h-px flex-1 bg-gradient-to-r from-emerald-200 via-emerald-200 to-transparent"></div>
+                                                </div>
+                                                <div className="space-y-3 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar">
+                                                    {family.familyMembers
+                                                        .filter(member =>
+                                                            member.name.toLowerCase().includes(searchTerm.toLowerCase())
+                                                        )
+                                                        .map(member => (
+                                                            <div key={member.id}>
+                                                                {renderFamilyMemberDetails(family, member)}
+                                                            </div>
+                                                        ))
+                                                    }
+                                                </div>
+                                            </div>
+                                        )}
                                 </div>
                             </motion.div>
                         ))}
@@ -313,7 +292,7 @@ const FamilyTree = () => {
                     {/* No Results Message */}
                     {filteredFamilies.length === 0 && (
                         <div className="text-center py-12">
-                            <p className="text-gray-600">No families found matching your search.</p>
+                            <p className="text-gray-600">No families or family members found matching your search.</p>
                         </div>
                     )}
                 </motion.div>
@@ -321,5 +300,25 @@ const FamilyTree = () => {
         </div>
     );
 };
+
+// Add this CSS to your global styles or component
+const customScrollbarStyles = `
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgba(16, 185, 129, 0.2);
+    border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(16, 185, 129, 0.3);
+}
+`;
 
 export default FamilyTree;
