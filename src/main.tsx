@@ -25,7 +25,7 @@ const router = createBrowserRouter([
         element: <AncestryPage />,
       },
       {
-        path: '/family-tree',
+        path: '/vanshavali',
         element: <FamilyTree />
       }
     ],

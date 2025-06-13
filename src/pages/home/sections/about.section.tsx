@@ -87,8 +87,8 @@ const AboutSection = () => {
                                     key={tab.id}
                                     onClick={() => setActiveTab(tab.id)}
                                     className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg transition-all duration-300 text-sm sm:text-base ${activeTab === tab.id
-                                            ? 'bg-emerald-600 text-white shadow-[0_4px_12px_rgba(16,185,129,0.2)] border border-emerald-500/20'
-                                            : 'text-gray-600 hover:bg-emerald-50 border border-transparent hover:border-emerald-200/50'
+                                        ? 'bg-emerald-600 text-white shadow-[0_4px_12px_rgba(16,185,129,0.2)] border border-emerald-500/20'
+                                        : 'text-gray-600 hover:bg-emerald-50 border border-transparent hover:border-emerald-200/50'
                                         }`}
                                 >
                                     <span className="font-medium">{tab.label}</span>

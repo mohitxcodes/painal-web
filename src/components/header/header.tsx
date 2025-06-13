@@ -8,7 +8,7 @@ export const Header = () => {
 
     const navLinks = [
         { name: 'Home', hindiName: 'होम', href: '/', icon: FaHome },
-        { name: 'FamilyTree', hindiName: 'वंशावली', href: '/family-tree', icon: FaUsers },
+        { name: 'Vanshavali', hindiName: 'वंशावली', href: '/vanshavali', icon: FaUsers },
         { name: 'Gallery', hindiName: 'गैलरी', href: '/gallery', icon: FaMapMarkerAlt },
         { name: 'Our Book', hindiName: 'हमारी पुस्तक', href: '/our-book', icon: FaBook },
     ];
