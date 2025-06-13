@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaHome, FaUsers, FaMapMarkerAlt, FaSchool } from 'react-icons/fa';
+import { FaHome, FaUsers, FaMapMarkerAlt } from 'react-icons/fa';
 
 export const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);

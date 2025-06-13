@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FaUsers, FaSearch, FaHome, FaMapMarkerAlt, FaUserFriends, FaHistory } from 'react-icons/fa';
+import { FaUsers, FaHome, FaMapMarkerAlt, FaUserFriends, FaHistory } from 'react-icons/fa';
 
 const ExploreMembers = () => {
     const villageData = {

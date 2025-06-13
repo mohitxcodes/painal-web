@@ -1,7 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaUsers, FaHome, FaMapMarkerAlt, FaSchool, FaLandmark, FaBook, FaHistory, FaHeart, FaShare } from 'react-icons/fa';
+import { FaUsers, FaHome, FaSchool, FaLandmark, FaBook, FaHistory, FaHeart, FaShare } from 'react-icons/fa';
 import { useState, useEffect } from 'react';
-import { AnimatedBackground } from '../../../components/common/AnimatedBackground';
 
 const AboutSection = () => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);

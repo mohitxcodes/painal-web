@@ -1,6 +1,6 @@
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, } from 'framer-motion';
 import { useState } from 'react';
-import { FaLandmark, FaSchool, FaTree, FaWater, FaRoad, FaInfoCircle } from 'react-icons/fa';
+import { FaLandmark, FaSchool, FaInfoCircle } from 'react-icons/fa';
 import { AnimatedBackground } from '../../components/common/AnimatedBackground';
 
 interface GalleryItem {

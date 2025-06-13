@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaCamera, FaExpand, FaTimes, FaFilter } from 'react-icons/fa';
+import { FaExpand, FaTimes, } from 'react-icons/fa';
 import { useState } from 'react';
 
 const GallerySection = () => {
