@@ -1,9 +1,11 @@
-import { motion } from 'framer-motion';
-import { FaUsers, FaHome, FaMapMarkerAlt, FaSchool, FaLandmark, FaRoad, FaTrain, FaPlane } from 'react-icons/fa';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FaUsers, FaHome, FaMapMarkerAlt, FaSchool, FaLandmark, FaBook, FaHistory, FaHeart, FaShare } from 'react-icons/fa';
 import { useState, useEffect } from 'react';
 import { AnimatedBackground } from '../../../components/common/AnimatedBackground';
+
 const AboutSection = () => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    const [activeTab, setActiveTab] = useState('overview');
 
     const images = [
         {
@@ -26,7 +28,7 @@ const AboutSection = () => {
     useEffect(() => {
         const timer = setInterval(() => {
             setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-        }, 5000); // Change image every 5 seconds
+        }, 5000);
 
         return () => clearInterval(timer);
     }, []);
@@ -40,232 +42,235 @@ const AboutSection = () => {
         { icon: FaUsers, label: 'Scheduled Caste', hindiLabel: 'अनुसूचित जाति', value: '15.3%', color: 'blue' },
     ];
 
-    const nearbyPlaces = [
+    const features = [
         {
-            category: 'Cities',
-            hindiCategory: 'शहर',
-            icon: FaLandmark,
-            places: [
-                { name: 'Maner', hindiName: 'मनेर', distance: '12 KM' },
-                { name: 'Patna', hindiName: 'पटना', distance: '22 KM' },
-                { name: 'Dighwara', hindiName: 'दिघवारा', distance: '22 KM' },
-                { name: 'Masaurhi', hindiName: 'मसौढ़ी', distance: '28 KM' },
-            ]
+            icon: FaHistory,
+            title: "Rich Heritage",
+            titleHindi: "समृद्ध विरासत",
+            description: "Discover the ancient history and cultural heritage of Painal village.",
+            descriptionHindi: "पैनाल गाँव की प्राचीन इतिहास और सांस्कृतिक विरासत का अन्वेषण करें।"
         },
         {
-            category: 'Tourist Places',
-            hindiCategory: 'पर्यटन स्थल',
-            icon: FaLandmark,
-            places: [
-                { name: 'Golghar', hindiName: 'गोलघर', distance: '22 KM' },
-                { name: 'Takht Sri Patna Sahib', hindiName: 'तख्त श्री पटना साहिब', distance: '24 KM' },
-                { name: 'Agam Kuan', hindiName: 'अगम कुआं', distance: '27 KM' },
-                { name: 'Vaishali', hindiName: 'वैशाली', distance: '55 KM' },
-            ]
+            icon: FaUsers,
+            title: "Community",
+            titleHindi: "समुदाय",
+            description: "A close-knit community of over 9,000 residents living in harmony.",
+            descriptionHindi: "9,000 से अधिक निवासियों का एक सुसंगत समुदाय।"
         },
+        {
+            icon: FaLandmark,
+            title: "Location",
+            titleHindi: "स्थान",
+            description: "Situated in Bihta block, Patna district, with excellent connectivity.",
+            descriptionHindi: "बिहटा ब्लॉक, पटना जिले में स्थित, उत्कृष्ट संपर्क के साथ।"
+        },
+        {
+            icon: FaBook,
+            title: "Education",
+            titleHindi: "शिक्षा",
+            description: "Home to quality educational institutions and learning centers.",
+            descriptionHindi: "गुणवत्तापूर्ण शैक्षणिक संस्थानों और शिक्षा केंद्रों का घर।"
+        }
+    ];
+
+    const tabs = [
+        { id: 'overview', label: 'Overview', hindiLabel: 'अवलोकन' },
+        { id: 'demographics', label: 'Demographics', hindiLabel: 'जनसांख्यिकी' }
     ];
 
     return (
-        <section className="relative min-h-[90vh] w-full overflow-hidden">
-            {/* Enhanced Background with multiple layers */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-green-100 via-blue-50 to-indigo-100 z-0"></div>
+        <section className="relative w-full py-8 sm:py-12 md:py-16 lg:py-20">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="text-center mb-8 sm:mb-12">
+                    <motion.h2
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5 }}
+                        className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-3 sm:mb-4"
+                    >
+                        About Our Village Painal
+                        <span className="block text-base sm:text-lg md:text-xl text-emerald-600 mt-1 sm:mt-2">हमारे गाँव पैनाल के बारे में</span>
+                    </motion.h2>
+                </div>
 
-            {/* Decorative patterns */}
-            <div className="absolute inset-0 opacity-5 bg-[url('/assets/pattern-bg.png')] bg-repeat z-0"></div>
+                {/* Tab Navigation */}
+                <div className="flex justify-center mb-6 sm:mb-8">
+                    <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-sm border border-emerald-200/50 p-1.5 sm:p-2">
+                        <div className="flex gap-1 sm:gap-2">
+                            {tabs.map((tab) => (
+                                <button
+                                    key={tab.id}
+                                    onClick={() => setActiveTab(tab.id)}
+                                    className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg transition-all duration-300 text-sm sm:text-base ${activeTab === tab.id
+                                        ? 'bg-emerald-600 text-white shadow-md'
+                                        : 'text-gray-600 hover:bg-emerald-50'
+                                        }`}
+                                >
+                                    <span className="font-medium">{tab.label}</span>
+                                    <span className="text-xs sm:text-sm opacity-80 ml-1">({tab.hindiLabel})</span>
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+                </div>
 
-            <AnimatedBackground />
+                {/* Content Area */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+                    {/* Left Column - Image Carousel */}
+                    <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5 }}
+                        className="relative h-[300px] sm:h-[350px] md:h-[400px] rounded-xl sm:rounded-2xl overflow-hidden shadow-xl"
+                    >
+                        <AnimatePresence mode="wait">
+                            <motion.img
+                                key={currentImageIndex}
+                                src={images[currentImageIndex].url}
+                                alt={images[currentImageIndex].title}
+                                className="absolute inset-0 w-full h-full object-cover"
+                                initial={{ opacity: 0, scale: 1.1 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.9 }}
+                                transition={{ duration: 0.5 }}
+                            />
+                        </AnimatePresence>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent">
+                            <div className="absolute bottom-0 left-0 p-4 sm:p-6">
+                                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-1 sm:mb-2">{images[currentImageIndex].title}</h3>
+                                <p className="text-sm sm:text-base text-emerald-200">{images[currentImageIndex].description}</p>
+                            </div>
+                        </div>
+                    </motion.div>
 
-            {/* Subtle grain texture overlay */}
-            <div className="absolute inset-0 bg-noise opacity-[0.03] mix-blend-overlay z-0"></div>
+                    {/* Right Column - Content */}
+                    <div className="space-y-4 sm:space-y-6">
+                        <AnimatePresence mode="wait">
+                            {activeTab === 'overview' && (
+                                <motion.div
+                                    key="overview"
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -20 }}
+                                    className="grid grid-cols-1 gap-3 sm:gap-4 h-[300px] sm:h-[350px] md:h-[400px] overflow-y-auto pr-2 custom-scrollbar"
+                                >
+                                    {features.map((feature, index) => (
+                                        <motion.div
+                                            key={index}
+                                            initial={{ opacity: 0, y: 20 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            transition={{ delay: index * 0.1 }}
+                                            className="bg-white/80 backdrop-blur-sm rounded-xl p-3 sm:p-4 shadow-sm hover:shadow-md transition-all"
+                                        >
+                                            <div className="flex items-start gap-3 sm:gap-4">
+                                                <div className="inline-flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-emerald-50 flex-shrink-0">
+                                                    <feature.icon className="text-lg sm:text-xl text-emerald-600" />
+                                                </div>
+                                                <div>
+                                                    <h3 className="text-base sm:text-lg font-semibold text-gray-800 mb-0.5 sm:mb-1">
+                                                        {feature.title}
+                                                        <span className="block text-xs sm:text-sm text-emerald-600">{feature.titleHindi}</span>
+                                                    </h3>
+                                                    <p className="text-xs sm:text-sm text-gray-600 mb-0.5 sm:mb-1">{feature.description}</p>
+                                                    <p className="text-xs text-emerald-600">{feature.descriptionHindi}</p>
+                                                </div>
+                                            </div>
+                                        </motion.div>
+                                    ))}
+                                </motion.div>
+                            )}
 
-            <div className="w-full px-4 container mx-auto sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 relative z-10">
+                            {activeTab === 'demographics' && (
+                                <motion.div
+                                    key="demographics"
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -20 }}
+                                    className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 h-[300px] sm:h-[350px] md:h-[400px] overflow-y-auto pr-2 custom-scrollbar"
+                                >
+                                    {stats.map((stat, index) => (
+                                        <motion.div
+                                            key={index}
+                                            initial={{ opacity: 0, y: 20 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            transition={{ delay: index * 0.1 }}
+                                            className="bg-white/80 backdrop-blur-sm rounded-xl p-3 sm:p-4 shadow-sm hover:shadow-md transition-all"
+                                        >
+                                            <div className="flex items-center gap-2 sm:gap-3">
+                                                <div className={`p-1.5 sm:p-2 rounded-lg bg-${stat.color}-50`}>
+                                                    <stat.icon className={`text-lg sm:text-xl text-${stat.color}-600`} />
+                                                </div>
+                                                <div>
+                                                    <p className="text-lg sm:text-xl font-bold text-gray-800">{stat.value}</p>
+                                                    <p className="text-xs sm:text-sm text-gray-600">{stat.label}</p>
+                                                    <p className="text-xs text-emerald-600">{stat.hindiLabel}</p>
+                                                </div>
+                                            </div>
+                                        </motion.div>
+                                    ))}
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+                    </div>
+                </div>
+
+                {/* Action Buttons */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
                     viewport={{ once: true }}
-                    className="w-full"
+                    transition={{ duration: 0.5, delay: 0.4 }}
+                    className="mt-8 sm:mt-12 flex flex-wrap justify-center gap-3 sm:gap-4"
                 >
-                    <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2 text-center">
-                        About Painal Village
-                    </h2>
-                    <h3 className="text-xl md:text-2xl text-green-600 mb-8 text-center">
-                        पैनल गांव के बारे में
-                    </h3>
-
-                    {/* Image Carousel */}
-                    <div className="relative w-full h-[400px] mb-12 rounded-2xl overflow-hidden shadow-xl">
-                        {images.map((image, index) => (
-                            <motion.div
-                                key={index}
-                                className="absolute inset-0"
-                                initial={{ opacity: 0 }}
-                                animate={{
-                                    opacity: currentImageIndex === index ? 1 : 0,
-                                    scale: currentImageIndex === index ? 1 : 1.1
-                                }}
-                                transition={{ duration: 1 }}
-                            >
-                                <img
-                                    src={image.url}
-                                    alt={image.title}
-                                    className="w-full h-full object-cover"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent">
-                                    <div className="absolute bottom-0 left-0 p-6 text-white">
-                                        <h3 className="text-2xl font-bold mb-2">{image.title}</h3>
-                                        <p className="text-lg">{image.description}</p>
-                                    </div>
-                                </div>
-                            </motion.div>
-                        ))}
-                        {/* Carousel Indicators */}
-                        <div className="absolute bottom-4 right-4 flex space-x-2">
-                            {images.map((_, index) => (
-                                <button
-                                    key={index}
-                                    className={`w-3 h-3 rounded-full transition-all duration-300 ${currentImageIndex === index ? 'bg-white scale-125' : 'bg-white/50'
-                                        }`}
-                                    onClick={() => setCurrentImageIndex(index)}
-                                />
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* Location Info */}
-                    <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-sm p-6 mb-8">
-                        <h3 className="text-xl font-semibold text-gray-800 mb-2 flex items-center gap-2">
-                            <FaMapMarkerAlt className="text-green-600" />
-                            Location & Overview
-                        </h3>
-                        <h4 className="text-lg text-green-600 mb-4 flex items-center gap-2">
-                            स्थान और अवलोकन
-                        </h4>
-                        <p className="text-gray-600 mb-4">
-                            Painal is a vibrant village located in Bihta Block of Patna District, Bihar.
-                            Situated 21 KM west of Patna and 9 KM from Bihta, it's a significant part of
-                            the Patna Division. The village is positioned at the border of Patna and
-                            Bhojpur districts, with an elevation of 62 meters above sea level.
-                        </p>
-                        <p className="text-green-600 mb-4">
-                            पैनल बिहार के पटना जिले के बिहटा ब्लॉक में स्थित एक जीवंत गांव है।
-                            पटना से 21 किमी पश्चिम और बिहटा से 9 किमी की दूरी पर स्थित, यह पटना डिवीजन का एक महत्वपूर्ण हिस्सा है।
-                            गांव पटना और भोजपुर जिलों की सीमा पर स्थित है, समुद्र तल से 62 मीटर की ऊंचाई पर।
-                        </p>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-600">
-                            <div>
-                                <p><span className="font-medium">Pin Code:</span> 800111</p>
-                                <p><span className="font-medium">Post Office:</span> Sadisopur</p>
-                                <p><span className="font-medium">Languages:</span> Hindi, Magahi, Maithili, Bhojpuri, English, Angika</p>
-                            </div>
-                            <div>
-                                <p><span className="font-medium">Assembly Constituency:</span> Maner</p>
-                                <p><span className="font-medium">Lok Sabha Constituency:</span> Pataliputra</p>
-                                <p><span className="font-medium">Time Zone:</span> IST (UTC+5:30)</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Demographics */}
-                    <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-sm p-6 mb-8">
-                        <h3 className="text-xl font-semibold text-gray-800 mb-2 flex items-center gap-2">
-                            <FaUsers className="text-green-600" />
-                            Demographics
-                        </h3>
-                        <h4 className="text-lg text-green-600 mb-4 flex items-center gap-2">
-                            जनसांख्यिकी
-                        </h4>
-                        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                            {stats.map((stat, index) => (
-                                <motion.div
-                                    key={index}
-                                    className="text-center p-4 bg-white/50 backdrop-blur-sm rounded-lg border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300"
-                                    whileHover={{ y: -2 }}
-                                >
-                                    <div className="flex items-center justify-center mb-2">
-                                        <stat.icon className={`text-xl text-${stat.color}-600`} />
-                                    </div>
-                                    <p className="text-2xl font-bold text-gray-800">{stat.value}</p>
-                                    <p className="text-sm text-gray-600 mt-1">{stat.label}</p>
-                                    <p className="text-xs text-green-600 mt-1">{stat.hindiLabel}</p>
-                                </motion.div>
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* Nearby Places */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                        {nearbyPlaces.map((category, index) => (
-                            <motion.div
-                                key={index}
-                                className="bg-white/80 backdrop-blur-sm rounded-xl shadow-sm p-6"
-                                whileHover={{ y: -2 }}
-                                transition={{ duration: 0.3 }}
-                            >
-                                <h3 className="text-xl font-semibold text-gray-800 mb-2 flex items-center gap-2">
-                                    <category.icon className="text-green-600" />
-                                    {category.category}
-                                </h3>
-                                <h4 className="text-lg text-green-600 mb-4">
-                                    {category.hindiCategory}
-                                </h4>
-                                <div className="space-y-3">
-                                    {category.places.map((place, placeIndex) => (
-                                        <div key={placeIndex} className="flex justify-between items-center text-gray-600">
-                                            <div className="flex flex-col">
-                                                <span>{place.name}</span>
-                                                <span className="text-sm text-green-600">{place.hindiName}</span>
-                                            </div>
-                                            <span className="text-green-600 font-medium">{place.distance}</span>
-                                        </div>
-                                    ))}
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
-
-                    {/* Transportation */}
-                    <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-sm p-6">
-                        <h3 className="text-xl font-semibold text-gray-800 mb-2 flex items-center gap-2">
-                            <FaRoad className="text-green-600" />
-                            Transportation
-                        </h3>
-                        <h4 className="text-lg text-green-600 mb-4">
-                            परिवहन
-                        </h4>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <h4 className="font-medium text-gray-800 mb-2 flex items-center gap-2">
-                                    <FaTrain className="text-green-600" />
-                                    Railway Stations
-                                    <span className="text-sm text-green-600">रेलवे स्टेशन</span>
-                                </h4>
-                                <ul className="space-y-2 text-gray-600">
-                                    <li>Sadisopur Railway Station (3.9 KM)</li>
-                                    <li>Neora Railway Station (4.4 KM)</li>
-                                    <li>Bihta Railway Station (8 KM)</li>
-                                    <li>Danapur Railway Station (10 KM)</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 className="font-medium text-gray-800 mb-2 flex items-center gap-2">
-                                    <FaPlane className="text-green-600" />
-                                    Airports
-                                    <span className="text-sm text-green-600">हवाई अड्डे</span>
-                                </h4>
-                                <ul className="space-y-2 text-gray-600">
-                                    <li>Patna Airport (16 KM)</li>
-                                    <li>Gaya Airport (102 KM)</li>
-                                    <li>Gorakhpur Airport (223 KM)</li>
-                                    <li>Varanasi Airport (236 KM)</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                    <motion.button
+                        className="px-4 sm:px-6 py-2 sm:py-3 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-all text-sm sm:text-base shadow-sm hover:shadow-md flex items-center gap-1.5 sm:gap-2"
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                    >
+                        <FaHeart className="text-emerald-100 text-sm sm:text-base" />
+                        <span>Learn More</span>
+                        <span className="text-emerald-100 text-xs sm:text-sm">(और जानें)</span>
+                    </motion.button>
+                    <motion.button
+                        className="px-4 sm:px-6 py-2 sm:py-3 border border-emerald-200 text-emerald-600 rounded-lg hover:bg-emerald-50 transition-all text-sm sm:text-base flex items-center gap-1.5 sm:gap-2"
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                    >
+                        <FaShare className="text-emerald-600 text-sm sm:text-base" />
+                        <span>Share</span>
+                        <span className="text-emerald-600 text-xs sm:text-sm">(शेयर करें)</span>
+                    </motion.button>
                 </motion.div>
             </div>
         </section>
     );
 };
 
+// Add custom scrollbar styles
+const styles = `
+.custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #10b981;
+    border-radius: 2px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #059669;
+}
+`;
+
+// Add styles to document head
+if (typeof document !== 'undefined') {
+    const styleSheet = document.createElement('style');
+    styleSheet.textContent = styles;
+    document.head.appendChild(styleSheet);
+}
+
 export default AboutSection;
+

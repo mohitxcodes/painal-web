@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState, useEffect } from 'react';
-import { FaLandmark, FaSchool, FaInfoCircle, FaChevronLeft, FaChevronRight, FaHeart, FaShare, FaDownload, FaPrint, FaMapMarkerAlt, FaCalendarAlt, FaStar } from 'react-icons/fa';
+import { useState } from 'react';
+import { FaLandmark, FaSchool, FaTree, FaWater, FaRoad, FaInfoCircle } from 'react-icons/fa';
 import { AnimatedBackground } from '../../components/common/AnimatedBackground';
 
 interface GalleryItem {
@@ -118,32 +118,6 @@ const tabs = [
 const GalleryPage = () => {
     const [activeTab, setActiveTab] = useState('temples');
     const [selectedItem, setSelectedItem] = useState<GalleryItem | null>(null);
-    const [currentImageIndex, setCurrentImageIndex] = useState(0);
-    const [isFullscreen, setIsFullscreen] = useState(false);
-    const [isLiked, setIsLiked] = useState(false);
-    const [showShareModal, setShowShareModal] = useState(false);
-
-    // Auto-advance carousel
-    useEffect(() => {
-        if (selectedItem && !isFullscreen) {
-            const timer = setInterval(() => {
-                setCurrentImageIndex((prev) => (prev + 1) % selectedItem.images.length);
-            }, 5000);
-            return () => clearInterval(timer);
-        }
-    }, [selectedItem, isFullscreen]);
-
-    const nextImage = () => {
-        if (selectedItem) {
-            setCurrentImageIndex((prev) => (prev + 1) % selectedItem.images.length);
-        }
-    };
-
-    const prevImage = () => {
-        if (selectedItem) {
-            setCurrentImageIndex((prev) => (prev - 1 + selectedItem.images.length) % selectedItem.images.length);
-        }
-    };
 
     return (
         <div className="relative min-h-screen w-full overflow-hidden py-10">
@@ -160,79 +134,57 @@ const GalleryPage = () => {
                     transition={{ duration: 0.8 }}
                     className="space-y-8"
                 >
-                    {/* Enhanced Header with Parallax Effect */}
-                    <motion.div
-                        className="text-center relative"
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8 }}
-                    >
-                        <div className="absolute -top-20 left-1/2 transform -translate-x-1/2 w-40 h-40 bg-green-200 rounded-full filter blur-3xl opacity-20"></div>
-                        <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent mb-2">
+                    {/* Header */}
+                    <div className="text-center">
+                        <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent mb-2">
                             Gallery
                         </h1>
                         <h2 className="text-2xl md:text-3xl text-emerald-600 mb-8">
                             गैलरी
                         </h2>
-                    </motion.div>
+                    </div>
 
-                    {/* Enhanced Tab Bar with Animation */}
-                    <motion.div
-                        className="bg-white/80 backdrop-blur-sm rounded-xl shadow-sm border border-green-200/50 p-2"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.2 }}
-                    >
+                    {/* Modern Tab Bar */}
+                    <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-sm border border-green-200/50 p-2">
                         <div className="flex flex-wrap gap-2">
                             {tabs.map((tab) => (
-                                <motion.button
+                                <button
                                     key={tab.id}
                                     onClick={() => setActiveTab(tab.id)}
                                     className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-300 ${activeTab === tab.id
                                         ? 'bg-green-600 text-white shadow-md'
                                         : 'text-gray-600 hover:bg-green-50'
                                         }`}
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
                                 >
                                     <tab.icon className="text-lg" />
                                     <span className="font-medium">{tab.label}</span>
                                     <span className="text-sm opacity-80">{tab.hindiLabel}</span>
-                                </motion.button>
+                                </button>
                             ))}
                         </div>
-                    </motion.div>
+                    </div>
 
-                    {/* Enhanced Content Area */}
-                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                        {/* Image Gallery with Enhanced Cards */}
-                        <div className="lg:col-span-1 bg-white/80 backdrop-blur-sm rounded-xl shadow-sm border border-green-200/50 p-4">
+                    {/* Content Area */}
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 ">
+                        {/* Image Gallery */}
+                        <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-sm border border-green-200/50 p-4">
                             <div className="grid grid-cols-1 gap-4">
                                 {galleryData[activeTab]?.map((item) => (
                                     <motion.div
                                         key={item.id}
                                         className="relative group cursor-pointer"
                                         whileHover={{ scale: 1.02 }}
-                                        onClick={() => {
-                                            setSelectedItem(item);
-                                            setCurrentImageIndex(0);
-                                        }}
+                                        onClick={() => setSelectedItem(item)}
                                     >
-                                        <div className="relative overflow-hidden rounded-lg">
-                                            <img
-                                                src={item.images[0]}
-                                                alt={item.title}
-                                                className="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500"
-                                            />
-                                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                                <div className="absolute bottom-0 left-0 p-6 text-white">
-                                                    <h3 className="text-xl font-semibold mb-1">{item.title}</h3>
-                                                    <p className="text-sm opacity-90 mb-2">{item.hindiTitle}</p>
-                                                    <div className="flex items-center gap-2">
-                                                        <FaMapMarkerAlt className="text-green-400" />
-                                                        <span className="text-sm">{item.location}</span>
-                                                    </div>
-                                                </div>
+                                        <img
+                                            src={item.images[0]}
+                                            alt={item.title}
+                                            className="w-full h-48 object-cover rounded-lg shadow-sm"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity">
+                                            <div className="absolute bottom-0 left-0 p-4 text-white">
+                                                <h3 className="font-semibold">{item.title}</h3>
+                                                <p className="text-sm opacity-90">{item.hindiTitle}</p>
                                             </div>
                                         </div>
                                     </motion.div>
@@ -240,131 +192,66 @@ const GalleryPage = () => {
                             </div>
                         </div>
 
-                        {/* Enhanced Content Panel */}
-                        <div className="lg:col-span-2 bg-white/80 backdrop-blur-sm rounded-xl shadow-sm border border-green-200/50 p-6">
+                        {/* Content Panel */}
+                        <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-sm border border-green-200/50 p-6">
                             {selectedItem ? (
                                 <motion.div
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     className="space-y-6"
                                 >
-                                    {/* Image Carousel */}
-                                    <div className="relative aspect-video rounded-lg overflow-hidden">
-                                        <img
-                                            src={selectedItem.images[currentImageIndex]}
-                                            alt={selectedItem.title}
-                                            className="w-full h-full object-cover"
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent">
-                                            <div className="absolute bottom-0 left-0 right-0 p-4">
-                                                <div className="flex justify-between items-center">
-                                                    <div className="flex gap-2">
-                                                        {selectedItem.images.map((_, index) => (
-                                                            <button
-                                                                key={index}
-                                                                onClick={() => setCurrentImageIndex(index)}
-                                                                className={`w-2 h-2 rounded-full transition-all ${currentImageIndex === index
-                                                                    ? 'bg-white scale-125'
-                                                                    : 'bg-white/50'
-                                                                    }`}
-                                                            />
-                                                        ))}
-                                                    </div>
-                                                    <div className="flex gap-2">
-                                                        <button
-                                                            onClick={prevImage}
-                                                            className="p-2 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors"
-                                                        >
-                                                            <FaChevronLeft className="text-white" />
-                                                        </button>
-                                                        <button
-                                                            onClick={nextImage}
-                                                            className="p-2 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors"
-                                                        >
-                                                            <FaChevronRight className="text-white" />
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <div>
+                                        <h3 className="text-2xl font-bold text-gray-800">{selectedItem.title}</h3>
+                                        <p className="text-lg text-green-600">{selectedItem.hindiTitle}</p>
                                     </div>
 
-                                    <div>
-                                        <div className="flex justify-between items-start mb-4">
+                                    <div className="space-y-4">
+                                        <div>
+                                            <h4 className="text-sm font-medium text-gray-500 flex items-center gap-2">
+                                                <FaInfoCircle className="text-green-600" />
+                                                Description
+                                            </h4>
+                                            <p className="text-gray-700 mt-1">{selectedItem.description}</p>
+                                            <p className="text-green-600 mt-1">{selectedItem.hindiDescription}</p>
+                                        </div>
+
+                                        <div>
+                                            <h4 className="text-sm font-medium text-gray-500">Location</h4>
+                                            <p className="text-gray-700">{selectedItem.location}</p>
+                                            <p className="text-green-600">{selectedItem.hindiLocation}</p>
+                                        </div>
+
+                                        {selectedItem.yearEstablished && (
                                             <div>
-                                                <h3 className="text-2xl font-bold text-gray-800">{selectedItem.title}</h3>
-                                                <p className="text-lg text-green-600">{selectedItem.hindiTitle}</p>
+                                                <h4 className="text-sm font-medium text-gray-500">Year Established</h4>
+                                                <p className="text-gray-700">{selectedItem.yearEstablished}</p>
                                             </div>
-                                            <button
-                                                onClick={() => setIsLiked(!isLiked)}
-                                                className={`p-2 rounded-full transition-colors ${isLiked ? 'text-red-500' : 'text-gray-400 hover:text-red-500'
-                                                    }`}
+                                        )}
+
+                                        {selectedItem.significance && (
+                                            <div>
+                                                <h4 className="text-sm font-medium text-gray-500">Significance</h4>
+                                                <p className="text-gray-700">{selectedItem.significance}</p>
+                                                <p className="text-green-600">{selectedItem.hindiSignificance}</p>
+                                            </div>
+                                        )}
+                                    </div>
+
+                                    {/* Image Gallery */}
+                                    <div className="grid grid-cols-3 gap-4 mt-6">
+                                        {selectedItem.images.map((image, index) => (
+                                            <motion.div
+                                                key={index}
+                                                className="relative aspect-square"
+                                                whileHover={{ scale: 1.05 }}
                                             >
-                                                <FaHeart className="text-xl" />
-                                            </button>
-                                        </div>
-
-                                        <div className="space-y-4">
-                                            <div className="bg-green-50/50 rounded-lg p-4">
-                                                <h4 className="text-sm font-medium text-gray-500 flex items-center gap-2 mb-2">
-                                                    <FaInfoCircle className="text-green-600" />
-                                                    Description
-                                                </h4>
-                                                <p className="text-gray-700">{selectedItem.description}</p>
-                                                <p className="text-green-600 mt-2">{selectedItem.hindiDescription}</p>
-                                            </div>
-
-                                            <div className="grid grid-cols-2 gap-4">
-                                                <div className="bg-green-50/50 rounded-lg p-4">
-                                                    <h4 className="text-sm font-medium text-gray-500 flex items-center gap-2 mb-2">
-                                                        <FaMapMarkerAlt className="text-green-600" />
-                                                        Location
-                                                    </h4>
-                                                    <p className="text-gray-700">{selectedItem.location}</p>
-                                                    <p className="text-green-600">{selectedItem.hindiLocation}</p>
-                                                </div>
-
-                                                {selectedItem.yearEstablished && (
-                                                    <div className="bg-green-50/50 rounded-lg p-4">
-                                                        <h4 className="text-sm font-medium text-gray-500 flex items-center gap-2 mb-2">
-                                                            <FaCalendarAlt className="text-green-600" />
-                                                            Established
-                                                        </h4>
-                                                        <p className="text-gray-700">{selectedItem.yearEstablished}</p>
-                                                    </div>
-                                                )}
-                                            </div>
-
-                                            {selectedItem.significance && (
-                                                <div className="bg-green-50/50 rounded-lg p-4">
-                                                    <h4 className="text-sm font-medium text-gray-500 flex items-center gap-2 mb-2">
-                                                        <FaStar className="text-green-600" />
-                                                        Significance
-                                                    </h4>
-                                                    <p className="text-gray-700">{selectedItem.significance}</p>
-                                                    <p className="text-green-600 mt-2">{selectedItem.hindiSignificance}</p>
-                                                </div>
-                                            )}
-                                        </div>
-
-                                        {/* Action Buttons */}
-                                        <div className="flex flex-wrap gap-3 mt-6">
-                                            <button
-                                                onClick={() => setShowShareModal(true)}
-                                                className="flex-1 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors flex items-center justify-center gap-2"
-                                            >
-                                                <FaShare />
-                                                <span>Share</span>
-                                            </button>
-                                            <button className="flex-1 px-4 py-2 bg-white border border-green-200 text-green-600 rounded-lg hover:bg-green-50 transition-colors flex items-center justify-center gap-2">
-                                                <FaDownload />
-                                                <span>Download</span>
-                                            </button>
-                                            <button className="flex-1 px-4 py-2 bg-white border border-green-200 text-green-600 rounded-lg hover:bg-green-50 transition-colors flex items-center justify-center gap-2">
-                                                <FaPrint />
-                                                <span>Print</span>
-                                            </button>
-                                        </div>
+                                                <img
+                                                    src={image}
+                                                    alt={`${selectedItem.title} - Image ${index + 1}`}
+                                                    className="w-full h-full object-cover rounded-lg shadow-sm"
+                                                />
+                                            </motion.div>
+                                        ))}
                                     </div>
                                 </motion.div>
                             ) : (
@@ -376,43 +263,6 @@ const GalleryPage = () => {
                     </div>
                 </motion.div>
             </div>
-
-            {/* Share Modal */}
-            <AnimatePresence>
-                {showShareModal && (
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center"
-                        onClick={() => setShowShareModal(false)}
-                    >
-                        <motion.div
-                            initial={{ scale: 0.9, opacity: 0 }}
-                            animate={{ scale: 1, opacity: 1 }}
-                            exit={{ scale: 0.9, opacity: 0 }}
-                            className="bg-white rounded-xl p-6 max-w-md w-full mx-4"
-                            onClick={e => e.stopPropagation()}
-                        >
-                            <h3 className="text-xl font-semibold text-gray-800 mb-4">Share {selectedItem?.title}</h3>
-                            <div className="space-y-4">
-                                <button className="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-                                    Share on Facebook
-                                </button>
-                                <button className="w-full px-4 py-2 bg-blue-400 text-white rounded-lg hover:bg-blue-500 transition-colors">
-                                    Share on Twitter
-                                </button>
-                                <button className="w-full px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">
-                                    Share on WhatsApp
-                                </button>
-                                <button className="w-full px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors">
-                                    Copy Link
-                                </button>
-                            </div>
-                        </motion.div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
         </div>
     );
 };

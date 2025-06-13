@@ -24,7 +24,6 @@ const AncestryPage = () => {
         // Get family data from localStorage
         const storedFamilyData = localStorage.getItem('selectedFamilyData');
         const storedFamilyTitle = localStorage.getItem('selectedFamilyTitle');
-        const storedSearchTerm = localStorage.getItem('ancestrySearchTerm');
 
         if (storedFamilyData) {
             setFamilyData(JSON.parse(storedFamilyData));
@@ -32,13 +31,6 @@ const AncestryPage = () => {
 
         if (storedFamilyTitle) {
             setFamilyTitle(JSON.parse(storedFamilyTitle));
-        }
-
-        // Set the search term if it exists in localStorage
-        if (storedSearchTerm) {
-            setSearchTerm(storedSearchTerm);
-            // Clear the stored search term after using it
-            localStorage.removeItem('ancestrySearchTerm');
         }
     }, []);
 

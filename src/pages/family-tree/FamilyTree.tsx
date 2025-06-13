@@ -302,23 +302,6 @@ const FamilyTree = () => {
 };
 
 // Add this CSS to your global styles or component
-const customScrollbarStyles = `
-.custom-scrollbar::-webkit-scrollbar {
-    width: 6px;
-}
 
-.custom-scrollbar::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb {
-    background-color: rgba(16, 185, 129, 0.2);
-    border-radius: 3px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(16, 185, 129, 0.3);
-}
-`;
 
 export default FamilyTree;
