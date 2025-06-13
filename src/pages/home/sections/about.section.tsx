@@ -1,32 +1,17 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaUsers, FaHome, FaSchool, FaLandmark, FaBook, FaHistory, FaHeart, FaShare } from 'react-icons/fa';
 import { useState, useEffect } from 'react';
+import { aboutImage } from '../../../data/HomeData'
 
 const AboutSection = () => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [activeTab, setActiveTab] = useState('overview');
 
-    const images = [
-        {
-            url: 'https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000',
-            title: 'Village Life',
-            description: 'Traditional village homes and peaceful surroundings'
-        },
-        {
-            url: 'https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000',
-            title: 'Agriculture',
-            description: 'Rich agricultural fields and farming traditions'
-        },
-        {
-            url: 'https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000',
-            title: 'Community',
-            description: 'Vibrant community gatherings and cultural events'
-        }
-    ];
+
 
     useEffect(() => {
         const timer = setInterval(() => {
-            setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+            setCurrentImageIndex((prevIndex) => (prevIndex + 1) % aboutImage.length);
         }, 5000);
 
         return () => clearInterval(timer);
@@ -127,8 +112,8 @@ const AboutSection = () => {
                         <AnimatePresence mode="wait">
                             <motion.img
                                 key={currentImageIndex}
-                                src={images[currentImageIndex].url}
-                                alt={images[currentImageIndex].title}
+                                src={aboutImage[currentImageIndex].url}
+                                alt={aboutImage[currentImageIndex].title}
                                 className="absolute inset-0 w-full h-full object-cover"
                                 initial={{ opacity: 0, scale: 1.1 }}
                                 animate={{ opacity: 1, scale: 1 }}
@@ -138,8 +123,8 @@ const AboutSection = () => {
                         </AnimatePresence>
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent">
                             <div className="absolute bottom-0 left-0 p-4 sm:p-6">
-                                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-1 sm:mb-2">{images[currentImageIndex].title}</h3>
-                                <p className="text-sm sm:text-base text-emerald-200">{images[currentImageIndex].description}</p>
+                                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-1 sm:mb-2">{aboutImage[currentImageIndex].title}</h3>
+                                <p className="text-sm sm:text-base text-emerald-200">{aboutImage[currentImageIndex].description}</p>
                             </div>
                         </div>
                     </motion.div>

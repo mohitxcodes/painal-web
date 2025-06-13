@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaExpand, FaTimes, } from 'react-icons/fa';
 import { useState } from 'react';
+import { galleryItems } from '../../../data/HomeData'
 
 const GallerySection = () => {
     const [selectedImage, setSelectedImage] = useState<{ url: string; title: string; titleHindi: string } | null>(null);
@@ -15,140 +16,7 @@ const GallerySection = () => {
         { id: 'education', name: 'Education', hindiName: 'शिक्षा' }
     ];
 
-    const galleryItems = [
-        {
-            id: 1,
-            title: "Village Temple",
-            titleHindi: "गाँव का मंदिर",
-            description: "Ancient temple showcasing local architecture",
-            descriptionHindi: "स्थानीय वास्तुकला का प्रदर्शन करने वाला प्राचीन मंदिर",
-            imageUrl: "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=1000",
-            category: "religious"
-        },
-        {
-            id: 2,
-            title: "Community Center",
-            titleHindi: "सामुदायिक केंद्र",
-            description: "Modern facility for village gatherings",
-            descriptionHindi: "गाँव की सभाओं के लिए आधुनिक सुविधा",
-            imageUrl: "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000",
-            category: "community"
-        },
-        {
-            id: 3,
-            title: "Local Market",
-            titleHindi: "स्थानीय बाजार",
-            description: "Vibrant marketplace with local produce",
-            descriptionHindi: "स्थानीय उत्पादों के साथ जीवंत बाजार",
-            imageUrl: "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000",
-            category: "community"
-        },
-        {
-            id: 4,
-            title: "Village School",
-            titleHindi: "गाँव का स्कूल",
-            description: "Education center for young minds",
-            descriptionHindi: "युवा मन के लिए शिक्षा केंद्र",
-            imageUrl: "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000",
-            category: "education"
-        },
-        {
-            id: 5,
-            title: "Village Park",
-            titleHindi: "गाँव का पार्क",
-            description: "Peaceful green space for recreation",
-            descriptionHindi: "मनोरंजन के लिए शांत हरित स्थान",
-            imageUrl: "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000",
-            category: "nature"
-        },
-        {
-            id: 6,
-            title: "Cultural Center",
-            titleHindi: "सांस्कृतिक केंद्र",
-            description: "Hub of cultural activities and events",
-            descriptionHindi: "सांस्कृतिक गतिविधियों और कार्यक्रमों का केंद्र",
-            imageUrl: "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000",
-            category: "community"
-        },
-        {
-            id: 7,
-            title: "Village Pond",
-            titleHindi: "गाँव का तालाब",
-            description: "Traditional water body for community use",
-            descriptionHindi: "समुदाय के उपयोग के लिए पारंपरिक जल निकाय",
-            imageUrl: "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000",
-            category: "nature"
-        },
-        {
-            id: 8,
-            title: "Agriculture Fields",
-            titleHindi: "कृषि क्षेत्र",
-            description: "Vast fields of crops and farming",
-            descriptionHindi: "फसलों और खेती के विशाल खेत",
-            imageUrl: "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000",
-            category: "nature"
-        },
-        {
-            id: 9,
-            title: "Village Road",
-            titleHindi: "गाँव की सड़क",
-            description: "Main thoroughfare connecting the village",
-            descriptionHindi: "गाँव को जोड़ने वाली मुख्य सड़क",
-            imageUrl: "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000",
-            category: "community"
-        },
-        {
-            id: 10,
-            title: "Village Well",
-            titleHindi: "गाँव का कुआँ",
-            description: "Traditional water source",
-            descriptionHindi: "पारंपरिक जल स्रोत",
-            imageUrl: "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000",
-            category: "nature"
-        },
-        {
-            id: 11,
-            title: "Village Gate",
-            titleHindi: "गाँव का द्वार",
-            description: "Historic entrance to the village",
-            descriptionHindi: "गाँव का ऐतिहासिक प्रवेश द्वार",
-            imageUrl: "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000",
-            category: "community"
-        },
-        {
-            id: 12,
-            title: "Village Square",
-            titleHindi: "गाँव का चौक",
-            description: "Central gathering place",
-            descriptionHindi: "केंद्रीय सभा स्थल",
-            imageUrl: "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000",
-            category: "community"
-        },
-        {
-            id: 13,
-            title: "Village Library",
-            titleHindi: "गाँव की पुस्तकालय",
-            description: "Knowledge center for villagers",
-            descriptionHindi: "ग्रामीणों के लिए ज्ञान केंद्र",
-            imageUrl: "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
-        },
-        {
-            id: 14,
-            title: "Village Clinic",
-            titleHindi: "गाँव का क्लिनिक",
-            description: "Healthcare facility for the community",
-            descriptionHindi: "समुदाय के लिए स्वास्थ्य सुविधा",
-            imageUrl: "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
-        },
-        {
-            id: 15,
-            title: "Village Garden",
-            titleHindi: "गाँव का बगीचा",
-            description: "Community garden and green space",
-            descriptionHindi: "सामुदायिक बगीचा और हरित स्थान",
-            imageUrl: "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
-        }
-    ];
+
 
     const filteredItems = galleryItems.filter(item => {
         return activeFilter === 'all' || item.category === activeFilter;

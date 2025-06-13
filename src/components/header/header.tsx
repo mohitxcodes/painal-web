@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaHome, FaUsers, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaHome, FaUsers, FaMapMarkerAlt, FaBook } from 'react-icons/fa';
 
 export const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -10,6 +10,7 @@ export const Header = () => {
         { name: 'Home', hindiName: 'होम', href: '/', icon: FaHome },
         { name: 'FamilyTree', hindiName: 'वंशावली', href: '/family-tree', icon: FaUsers },
         { name: 'Gallery', hindiName: 'गैलरी', href: '/gallery', icon: FaMapMarkerAlt },
+        { name: 'Our Book', hindiName: 'हमारी पुस्तक', href: '/our-book', icon: FaBook },
     ];
 
     useEffect(() => {

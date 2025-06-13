@@ -25,59 +25,64 @@ export const Footer = () => {
 
             {/* Footer Content */}
             <div className="relative z-10">
-                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex flex-col md:flex-row items-center justify-between py-6 space-y-4 md:space-y-0">
+                <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+                    <div className="flex flex-col md:flex-row items-center justify-between py-4 sm:py-5 md:py-6">
                         {/* Logo and Copyright */}
-                        <div className="flex items-center space-x-2">
-                            <svg
-                                className="w-6 h-6 text-green-600"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
+                        <div className="flex items-center space-x-2 mb-4 md:mb-0">
+                            <motion.div
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
                             >
-                                <path
-                                    d="M12 2L2 7L12 12L22 7L12 2Z"
-                                    stroke="currentColor"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                />
-                                <path
-                                    d="M2 17L12 22L22 17"
-                                    stroke="currentColor"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                />
-                                <path
-                                    d="M2 12L12 17L22 12"
-                                    stroke="currentColor"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                />
-                            </svg>
+                                <svg
+                                    className="w-5 h-5 sm:w-6 sm:h-6 text-green-600"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        d="M12 2L2 7L12 12L22 7L12 2Z"
+                                        stroke="currentColor"
+                                        strokeWidth="2"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                    />
+                                    <path
+                                        d="M2 17L12 22L22 17"
+                                        stroke="currentColor"
+                                        strokeWidth="2"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                    />
+                                    <path
+                                        d="M2 12L12 17L22 12"
+                                        stroke="currentColor"
+                                        strokeWidth="2"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                    />
+                                </svg>
+                            </motion.div>
                             <div className="flex flex-col">
-                                <span className="text-sm text-gray-700">
-                                    © {currentYear} Painal Village. Made with <FaHeart className="inline text-red-500 mx-1" /> by the community
+                                <span className="text-xs sm:text-sm text-gray-700">
+                                    © {currentYear} Painal Village. Made with <FaHeart className="inline text-red-500 mx-0.5 sm:mx-1" /> by the community
                                 </span>
-                                <span className="text-xs text-green-600">
-                                    © {currentYear} पैनल गांव। समुदाय द्वारा <FaHeart className="inline text-red-500 mx-1" /> के साथ बनाया गया
+                                <span className="text-[10px] sm:text-xs text-green-600">
+                                    © {currentYear} पैनल गांव। समुदाय द्वारा <FaHeart className="inline text-red-500 mx-0.5 sm:mx-1" /> के साथ बनाया गया
                                 </span>
                             </div>
                         </div>
 
-                        {/* Quick Links */}
-                        <nav className="hidden md:flex items-center space-x-6">
+                        {/* Desktop Quick Links - Single Row */}
+                        <nav className="hidden md:flex items-center space-x-4 lg:space-x-6">
                             {quickLinks.map((link) => (
                                 <motion.a
                                     key={link.name}
                                     href={link.href}
-                                    className="text-sm text-gray-700 hover:text-green-600 transition-colors flex flex-col items-center"
-                                    whileHover={{ y: -2 }}
+                                    className="text-sm lg:text-base text-gray-700 hover:text-green-600 transition-colors flex items-center space-x-1"
+                                    whileHover={{ y: -1 }}
                                 >
                                     <span>{link.name}</span>
-                                    <span className="text-xs text-green-600">{link.hindiName}</span>
+                                    <span className="text-xs lg:text-sm text-green-600">({link.hindiName})</span>
                                 </motion.a>
                             ))}
                         </nav>
