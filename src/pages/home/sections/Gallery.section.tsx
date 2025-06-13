@@ -63,15 +63,15 @@ const GallerySection = () => {
 
                 {/* Category Filter */}
                 <div className="max-w-4xl mx-auto mb-4 sm:mb-8">
-                    <div className="bg-white/80 backdrop-blur-sm rounded-xl p-2 sm:p-4 shadow-sm">
+                    <div className="bg-white/80 backdrop-blur-sm rounded-xl p-2 sm:p-4 shadow-[0_4px_12px_rgba(0,0,0,0.05)] border border-gray-100">
                         <div className="flex gap-1.5 sm:gap-2 overflow-x-auto pb-1 sm:pb-2">
                             {categories.map((category) => (
                                 <motion.button
                                     key={category.id}
                                     onClick={() => setActiveFilter(category.id)}
                                     className={`px-2 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium whitespace-nowrap transition-all ${activeFilter === category.id
-                                        ? 'bg-emerald-600 text-white shadow-lg'
-                                        : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                                        ? 'bg-emerald-600 text-white shadow-[0_4px_12px_rgba(16,185,129,0.2)] border border-emerald-500/20'
+                                        : 'bg-gray-100 text-gray-600 hover:bg-gray-200 border border-transparent hover:border-emerald-200/50'
                                         }`}
                                     whileHover={{ scale: 1.02 }}
                                     whileTap={{ scale: 0.98 }}
@@ -85,7 +85,7 @@ const GallerySection = () => {
                 </div>
 
                 {/* Gallery Grid */}
-                <div className="relative h-[400px] sm:h-[600px] md:h-[700px] lg:h-[800px] bg-white/80 backdrop-blur-sm rounded-xl shadow-lg overflow-hidden">
+                <div className="relative h-[400px] sm:h-[600px] md:h-[700px] lg:h-[800px] bg-white/80 backdrop-blur-sm rounded-xl shadow-[0_8px_30px_rgba(0,0,0,0.12)] border border-gray-100 overflow-hidden">
                     <div className="h-full overflow-y-auto custom-scrollbar">
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-1.5 sm:gap-3 md:gap-4 p-1.5 sm:p-3 md:p-4">
                             {filteredItems.map((item, index) => (
@@ -94,7 +94,7 @@ const GallerySection = () => {
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                                    className={`group relative overflow-hidden rounded-lg sm:rounded-xl bg-white shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer ${index < 6 ? 'ring-1 sm:ring-2 ring-emerald-500' : ''}`}
+                                    className={`group relative overflow-hidden rounded-lg sm:rounded-xl bg-white shadow-[0_4px_12px_rgba(0,0,0,0.05)] hover:shadow-[0_6px_16px_rgba(0,0,0,0.08)] transition-all duration-300 cursor-pointer border border-gray-100 hover:border-emerald-500/50 ${index < 6 ? 'ring-1 sm:ring-2 ring-emerald-50' : ''}`}
                                     onClick={() => handleImageClick(item)}
                                 >
                                     <div className="aspect-[4/3] relative">
@@ -110,7 +110,7 @@ const GallerySection = () => {
                                                     <span className="block text-[10px] sm:text-xs md:text-sm text-emerald-200">{item.titleHindi}</span>
                                                 </h3>
                                                 <p className="text-[10px] sm:text-xs md:text-sm text-gray-200 line-clamp-2">{item.description}</p>
-                                                <div className="absolute top-1.5 sm:top-3 md:top-4 right-1.5 sm:right-3 md:right-4 p-1 sm:p-1.5 md:p-2 bg-white/20 rounded-full backdrop-blur-sm shadow-lg">
+                                                <div className="absolute top-1.5 sm:top-3 md:top-4 right-1.5 sm:right-3 md:right-4 p-1 sm:p-1.5 md:p-2 bg-white/20 rounded-full backdrop-blur-sm shadow-[0_2px_8px_rgba(0,0,0,0.1)] border border-white/30">
                                                     <FaExpand className="text-white text-sm sm:text-base md:text-lg" />
                                                 </div>
                                             </div>
@@ -158,14 +158,14 @@ const GallerySection = () => {
                             <img
                                 src={selectedImage.url}
                                 alt={selectedImage.title}
-                                className="w-full h-[80vh] object-contain rounded-lg"
+                                className="w-full h-[80vh] object-contain rounded-lg shadow-[0_8px_30px_rgba(0,0,0,0.2)] border border-gray-100"
                             />
                             <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent rounded-b-lg">
                                 <h3 className="text-2xl font-bold text-white mb-1">{selectedImage.title}</h3>
                                 <p className="text-lg text-emerald-200">{selectedImage.titleHindi}</p>
                             </div>
                             <button
-                                className="absolute top-4 right-4 p-2 bg-white/20 rounded-full backdrop-blur-sm hover:bg-white/30 transition-colors"
+                                className="absolute top-4 right-4 p-2 bg-white/20 rounded-full backdrop-blur-sm hover:bg-white/30 transition-colors shadow-[0_2px_8px_rgba(0,0,0,0.1)] border border-white/30"
                                 onClick={handleCloseZoom}
                             >
                                 <FaTimes className="text-white text-xl" />

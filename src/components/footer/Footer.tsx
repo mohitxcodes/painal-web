@@ -14,14 +14,21 @@ export const Footer = () => {
 
     return (
         <footer className="relative w-full">
-            {/* Footer Background */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-green-100 via-green-50 to-green-100 opacity-95 backdrop-blur-sm"></div>
+            {/* Base White Background */}
+            <div className="absolute inset-0 bg-white opacity-95 backdrop-blur-sm"></div>
 
-            {/* Decorative patterns */}
-            <div className="absolute inset-0 opacity-5 bg-[url('/assets/pattern-bg.png')] bg-repeat"></div>
+            {/* Subtle Gradient Layers */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-gray-50/60 via-white to-gray-50/60"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-gray-50/40 via-white to-gray-50/40"></div>
 
-            {/* Subtle grain texture overlay */}
-            <div className="absolute inset-0 bg-noise opacity-[0.03] mix-blend-overlay"></div>
+            {/* Pattern Overlay */}
+            <div className="absolute inset-0 opacity-[0.02] bg-[url('/assets/pattern-bg.png')] bg-repeat"></div>
+
+            {/* Subtle Radial Gradient */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gray-100/20 via-transparent to-transparent"></div>
+
+            {/* Noise Texture */}
+            <div className="absolute inset-0 bg-noise opacity-[0.01] mix-blend-overlay"></div>
 
             {/* Footer Content */}
             <div className="relative z-10">

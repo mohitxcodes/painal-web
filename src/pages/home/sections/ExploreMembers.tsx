@@ -45,7 +45,7 @@ const ExploreMembers = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: 0.3 }}
-                            className="bg-white/80 backdrop-blur-sm rounded-xl p-3 sm:p-4 md:p-6 shadow-sm"
+                            className="bg-white/80 backdrop-blur-sm rounded-xl p-3 sm:p-4 md:p-6 shadow-[0_4px_12px_rgba(0,0,0,0.05)] border border-gray-100 hover:border-emerald-200/50"
                         >
                             <div className="grid grid-cols-3 gap-2 sm:gap-3 md:gap-4">
                                 {[
@@ -61,7 +61,7 @@ const ExploreMembers = () => {
                                         transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
                                         className="text-center"
                                     >
-                                        <div className="inline-flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 rounded-full bg-emerald-50 mb-1 sm:mb-1.5 md:mb-2">
+                                        <div className="inline-flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 rounded-full bg-emerald-50 mb-1 sm:mb-1.5 md:mb-2 shadow-[0_2px_8px_rgba(16,185,129,0.1)] border border-emerald-100/50">
                                             <stat.icon className="text-base sm:text-lg md:text-xl text-emerald-600" />
                                         </div>
                                         <p className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-0.5">{stat.value}</p>
@@ -76,7 +76,7 @@ const ExploreMembers = () => {
                                         <p className="text-[9px] sm:text-[10px] md:text-xs text-gray-600 mb-0.5">Oldest Record</p>
                                         <p className="text-sm sm:text-base md:text-lg font-semibold text-emerald-600">{villageData.oldestMember}</p>
                                     </div>
-                                    <div className="w-px h-5 sm:h-6 md:h-8 bg-gray-200"></div>
+                                    <div className="w-px h-5 sm:h-6 md:h-8 bg-gradient-to-b from-gray-200 via-emerald-200 to-gray-200"></div>
                                     <div className="text-center">
                                         <p className="text-[9px] sm:text-[10px] md:text-xs text-gray-600 mb-0.5">Latest Record</p>
                                         <p className="text-sm sm:text-base md:text-lg font-semibold text-emerald-600">{villageData.youngestMember}</p>
@@ -91,7 +91,7 @@ const ExploreMembers = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: 0.5 }}
-                            className="bg-white/80 backdrop-blur-sm rounded-xl p-3 sm:p-4 md:p-6 shadow-sm"
+                            className="bg-white/80 backdrop-blur-sm rounded-xl p-3 sm:p-4 md:p-6 shadow-[0_4px_12px_rgba(0,0,0,0.05)] border border-gray-100 hover:border-emerald-200/50"
                         >
                             <div className="h-full flex flex-col justify-center">
                                 <h3 className="text-base sm:text-lg md:text-xl font-semibold text-gray-800 mb-1.5 sm:mb-2 md:mb-3">
@@ -105,7 +105,7 @@ const ExploreMembers = () => {
                                     नाम या गांव के क्षेत्र से अपने परिवार के सदस्यों को खोजें। अपने रिश्तेदारों से जुड़ें और पैनल में अपने परिवार का इतिहास जानें।
                                 </p>
                                 <motion.button
-                                    className="mt-3 sm:mt-4 md:mt-6 px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-all text-xs sm:text-sm md:text-base shadow-sm hover:shadow-md flex items-center justify-center space-x-1.5 sm:space-x-2 md:space-x-3 w-full sm:w-auto sm:self-center"
+                                    className="mt-3 sm:mt-4 md:mt-6 px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-all text-xs sm:text-sm md:text-base shadow-[0_4px_12px_rgba(16,185,129,0.2)] hover:shadow-[0_6px_16px_rgba(16,185,129,0.3)] border border-emerald-500/20 hover:border-emerald-400/30 flex items-center justify-center space-x-1.5 sm:space-x-2 md:space-x-3 w-full sm:w-auto sm:self-center"
                                     whileHover={{ scale: 1.02 }}
                                     whileTap={{ scale: 0.98 }}
                                 >

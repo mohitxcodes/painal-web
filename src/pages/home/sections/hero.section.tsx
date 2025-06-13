@@ -71,7 +71,7 @@ const HeroSection = () => {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ duration: 1 }}
-                            className="inline-block bg-emerald-50 backdrop-blur-sm px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm text-emerald-700 font-medium border border-emerald-200"
+                            className="inline-block bg-emerald-50 backdrop-blur-sm px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm text-emerald-700 font-medium border border-emerald-200 shadow-[0_2px_10px_rgba(16,185,129,0.1)] hover:shadow-[0_4px_15px_rgba(16,185,129,0.15)] transition-all duration-300"
                         >
                             {villageInfo.location.block} Block, {villageInfo.location.district} District
                         </motion.div>
@@ -130,11 +130,11 @@ const HeroSection = () => {
                             {villageInfo.stats.map((stat, index) => (
                                 <motion.div
                                     key={index}
-                                    className="relative flex-shrink-0 sm:flex-shrink w-[140px] sm:w-auto"
+                                    className="relative flex-shrink-0 sm:flex-shrink w-[140px] sm:w-auto group"
                                     whileHover={{ scale: 1.02 }}
                                 >
-                                    <div className="flex items-center space-x-2 sm:space-x-3">
-                                        <div className={`p-1.5 sm:p-2 rounded-lg bg-${stat.color}-50`}>
+                                    <div className="flex items-center space-x-2 sm:space-x-3 p-2 rounded-lg hover:bg-emerald-50/50 transition-all duration-300 border border-transparent hover:border-emerald-200/50">
+                                        <div className={`p-1.5 sm:p-2 rounded-lg bg-${stat.color}-50 shadow-[0_2px_8px_rgba(16,185,129,0.1)] group-hover:shadow-[0_4px_12px_rgba(16,185,129,0.15)] transition-all duration-300 border border-${stat.color}-100/50`}>
                                             <stat.icon className={`text-lg sm:text-xl text-${stat.color}-600`} />
                                         </div>
                                         <div>
@@ -147,7 +147,7 @@ const HeroSection = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="absolute -bottom-2 left-0 w-full h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
+                                    <div className="absolute -bottom-2 left-0 w-full h-px bg-gradient-to-r from-transparent via-emerald-200 to-transparent group-hover:via-emerald-300 transition-all duration-300"></div>
                                 </motion.div>
                             ))}
                         </motion.div>
@@ -159,14 +159,14 @@ const HeroSection = () => {
                             transition={{ duration: 0.8, delay: 0.9 }}
                         >
                             <motion.button
-                                className="px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-all text-sm sm:text-base shadow-sm hover:shadow-md"
+                                className="px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-all text-sm sm:text-base shadow-[0_4px_12px_rgba(16,185,129,0.2)] hover:shadow-[0_6px_16px_rgba(16,185,129,0.3)] border border-emerald-500/20 hover:border-emerald-400/30"
                                 whileHover={{ scale: 1.02 }}
                                 whileTap={{ scale: 0.98 }}
                             >
                                 Explore Village <span className="text-emerald-100">(गाँव की खोज)</span>
                             </motion.button>
                             <motion.button
-                                className="px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 border border-gray-200 text-gray-700 rounded-lg hover:bg-gray-50 transition-all text-sm sm:text-base"
+                                className="px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 border border-gray-200 text-gray-700 rounded-lg hover:bg-gray-50 transition-all text-sm sm:text-base shadow-[0_2px_8px_rgba(0,0,0,0.05)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.08)] hover:border-emerald-200 hover:text-emerald-700"
                                 whileHover={{ scale: 1.02 }}
                                 whileTap={{ scale: 0.98 }}
                             >
@@ -184,7 +184,7 @@ const HeroSection = () => {
                         style={{ transform: `translateY(${scrollY * -0.05}px)` }}
                     >
                         <motion.div
-                            className="relative rounded-xl sm:rounded-2xl overflow-hidden shadow-xl"
+                            className="relative rounded-xl sm:rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.12)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.15)] transition-all duration-300 border border-gray-100"
                             whileHover={{ scale: 1.02 }}
                             transition={{ duration: 0.3 }}
                         >
@@ -206,7 +206,7 @@ const HeroSection = () => {
 
                                 <div className="flex mt-2 sm:mt-3 space-x-2">
                                     {villageInfo.tags.map((tag, index) => (
-                                        <span key={index} className="inline-block bg-white/20 backdrop-blur-sm px-2 py-0.5 sm:px-3 sm:py-1 rounded-full text-[10px] sm:text-xs text-white border border-white/30">
+                                        <span key={index} className="inline-block bg-white/20 backdrop-blur-sm px-2 py-0.5 sm:px-3 sm:py-1 rounded-full text-[10px] sm:text-xs text-white border border-white/30 hover:bg-white/30 hover:border-white/40 transition-all duration-300 shadow-[0_2px_8px_rgba(0,0,0,0.1)]">
                                             {tag}
                                         </span>
                                     ))}

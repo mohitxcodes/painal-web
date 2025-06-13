@@ -23,20 +23,21 @@ export const Header = () => {
 
     return (
         <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'shadow-md' : ''}`}>
-            {/* Enhanced Background with multiple layers */}
-            <div className={`absolute bg-emerald-50 inset-0 z-0 transition-all duration-300 ${isScrolled ? 'bg-opacity-95' : 'bg-opacity-90'}`}></div>
+            {/* Base White Background */}
+            <div className={`absolute bg-white inset-0 z-0 transition-all duration-300 ${isScrolled ? 'bg-opacity-98' : 'bg-opacity-95'}`}></div>
 
-            {/* Classic Pattern Overlay */}
-            <div className="absolute inset-0 opacity-[0.15] bg-[url('/assets/pattern-bg.png')] bg-repeat z-0"></div>
+            {/* Subtle Gradient Layers */}
+            <div className="absolute inset-0 bg-gradient-to-br from-gray-50/60 via-white to-gray-50/60 z-0"></div>
+            <div className="absolute inset-0 bg-gradient-to-tr from-gray-50/40 via-white to-gray-50/40 z-0"></div>
 
-            {/* Subtle Color Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-br from-emerald-100/20 via-transparent to-blue-100/20 z-0"></div>
-
-            {/* Enhanced grain texture overlay */}
-            <div className="absolute inset-0 bg-noise opacity-[0.04] mix-blend-overlay z-0"></div>
+            {/* Pattern Overlay */}
+            <div className="absolute inset-0 opacity-[0.02] bg-[url('/assets/pattern-bg.png')] bg-repeat z-0"></div>
 
             {/* Subtle Radial Gradient */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-emerald-50/30 via-transparent to-transparent z-0"></div>
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gray-100/20 via-transparent to-transparent z-0"></div>
+
+            {/* Noise Texture */}
+            <div className="absolute inset-0 bg-noise opacity-[0.01] mix-blend-overlay z-0"></div>
 
             {/* Header Content */}
             <div className="relative z-10">

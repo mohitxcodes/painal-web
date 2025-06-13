@@ -87,8 +87,8 @@ const AboutSection = () => {
                                     key={tab.id}
                                     onClick={() => setActiveTab(tab.id)}
                                     className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg transition-all duration-300 text-sm sm:text-base ${activeTab === tab.id
-                                        ? 'bg-emerald-600 text-white shadow-md'
-                                        : 'text-gray-600 hover:bg-emerald-50'
+                                            ? 'bg-emerald-600 text-white shadow-[0_4px_12px_rgba(16,185,129,0.2)] border border-emerald-500/20'
+                                            : 'text-gray-600 hover:bg-emerald-50 border border-transparent hover:border-emerald-200/50'
                                         }`}
                                 >
                                     <span className="font-medium">{tab.label}</span>
@@ -107,7 +107,7 @@ const AboutSection = () => {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5 }}
-                        className="relative h-[300px] sm:h-[350px] md:h-[400px] rounded-xl sm:rounded-2xl overflow-hidden shadow-xl"
+                        className="relative h-[300px] sm:h-[350px] md:h-[400px] rounded-xl sm:rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.12)] border border-gray-100"
                     >
                         <AnimatePresence mode="wait">
                             <motion.img
@@ -146,10 +146,10 @@ const AboutSection = () => {
                                             initial={{ opacity: 0, y: 20 }}
                                             animate={{ opacity: 1, y: 0 }}
                                             transition={{ delay: index * 0.1 }}
-                                            className="bg-white/80 backdrop-blur-sm rounded-xl p-3 sm:p-4 shadow-sm hover:shadow-md transition-all"
+                                            className="bg-white/80 backdrop-blur-sm rounded-xl p-3 sm:p-4 shadow-[0_4px_12px_rgba(0,0,0,0.05)] hover:shadow-[0_6px_16px_rgba(0,0,0,0.08)] transition-all border border-gray-100 hover:border-emerald-200/50"
                                         >
                                             <div className="flex items-start gap-3 sm:gap-4">
-                                                <div className="inline-flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-emerald-50 flex-shrink-0">
+                                                <div className="inline-flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-emerald-50 flex-shrink-0 shadow-[0_2px_8px_rgba(16,185,129,0.1)] border border-emerald-100/50">
                                                     <feature.icon className="text-lg sm:text-xl text-emerald-600" />
                                                 </div>
                                                 <div>
@@ -180,10 +180,10 @@ const AboutSection = () => {
                                             initial={{ opacity: 0, y: 20 }}
                                             animate={{ opacity: 1, y: 0 }}
                                             transition={{ delay: index * 0.1 }}
-                                            className="bg-white/80 backdrop-blur-sm rounded-xl p-3 sm:p-4 shadow-sm hover:shadow-md transition-all"
+                                            className="bg-white/80 backdrop-blur-sm rounded-xl p-3 sm:p-4 shadow-[0_4px_12px_rgba(0,0,0,0.05)] hover:shadow-[0_6px_16px_rgba(0,0,0,0.08)] transition-all border border-gray-100 hover:border-emerald-200/50"
                                         >
                                             <div className="flex items-center gap-2 sm:gap-3">
-                                                <div className={`p-1.5 sm:p-2 rounded-lg bg-${stat.color}-50`}>
+                                                <div className={`p-1.5 sm:p-2 rounded-lg bg-${stat.color}-50 shadow-[0_2px_8px_rgba(16,185,129,0.1)] border border-${stat.color}-100/50`}>
                                                     <stat.icon className={`text-lg sm:text-xl text-${stat.color}-600`} />
                                                 </div>
                                                 <div>
@@ -209,7 +209,7 @@ const AboutSection = () => {
                     className="mt-8 sm:mt-12 flex flex-wrap justify-center gap-3 sm:gap-4"
                 >
                     <motion.button
-                        className="px-4 sm:px-6 py-2 sm:py-3 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-all text-sm sm:text-base shadow-sm hover:shadow-md flex items-center gap-1.5 sm:gap-2"
+                        className="px-4 sm:px-6 py-2 sm:py-3 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-all text-sm sm:text-base shadow-[0_4px_12px_rgba(16,185,129,0.2)] hover:shadow-[0_6px_16px_rgba(16,185,129,0.3)] border border-emerald-500/20 hover:border-emerald-400/30 flex items-center gap-1.5 sm:gap-2"
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                     >
@@ -218,7 +218,7 @@ const AboutSection = () => {
                         <span className="text-emerald-100 text-xs sm:text-sm">(और जानें)</span>
                     </motion.button>
                     <motion.button
-                        className="px-4 sm:px-6 py-2 sm:py-3 border border-emerald-200 text-emerald-600 rounded-lg hover:bg-emerald-50 transition-all text-sm sm:text-base flex items-center gap-1.5 sm:gap-2"
+                        className="px-4 sm:px-6 py-2 sm:py-3 border border-gray-200 text-gray-700 rounded-lg hover:bg-gray-50 transition-all text-sm sm:text-base shadow-[0_2px_8px_rgba(0,0,0,0.05)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.08)] hover:border-emerald-200 hover:text-emerald-700 flex items-center gap-1.5 sm:gap-2"
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                     >
