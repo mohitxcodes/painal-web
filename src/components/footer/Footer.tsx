@@ -5,11 +5,7 @@ export const Footer = () => {
     const currentYear = new Date().getFullYear();
 
     const quickLinks = [
-        { name: 'About', hindiName: 'हमारे बारे में', href: '/about' },
-        { name: 'History', hindiName: 'इतिहास', href: '/history' },
-        { name: 'Gallery', hindiName: 'गैलरी', href: '/gallery' },
-        { name: 'Events', hindiName: 'कार्यक्रम', href: '/events' },
-        { name: 'Contact', hindiName: 'संपर्क', href: '/contact' }
+        { name: 'Home', hindiName: 'हमारे बारे में', href: '/' },
     ];
 
     return (

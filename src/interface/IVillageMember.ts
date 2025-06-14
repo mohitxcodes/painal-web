@@ -2,6 +2,8 @@ export interface IVillageMember {
     id: number;
     name: string;
     hindiName: string;
+    fatherName: string;
+    fatherNameHindi: string;
     birthYear?: number;
     children: number[];
     parentId?: number;

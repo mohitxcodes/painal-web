@@ -6,7 +6,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import GalleryPage from './pages/gallery/GalleryPage.tsx'
 import { HomePage } from './pages/home/Home.page'
 import AncestryPage from './pages/ancestry/AncestryPage.tsx'
-import FamilyTree from './pages/family-tree/FamilyTree.tsx'
+import FamilyTree from './pages/family-tree/FamilyPage.tsx'
 const router = createBrowserRouter([
   {
     path: '/',
