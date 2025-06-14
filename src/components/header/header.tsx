@@ -13,6 +13,7 @@ export const Header = () => {
         { name: 'Our Book', hindiName: 'हमारी पुस्तक', href: '/our-book', icon: FaBook },
     ];
 
+
     useEffect(() => {
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 20);
@@ -108,7 +109,7 @@ export const Header = () => {
                         {/* Mobile Menu Button */}
                         <motion.button
                             onClick={() => setIsMenuOpen(!isMenuOpen)}
-                            className="md:hidden p-2 rounded-lg text-gray-700 hover:bg-emerald-50 focus:outline-none transition-colors"
+                            className="md:hidden p-2 rounded-lg text-gray-700 hover:bg-emerald-50 focus:outline-none transition-colors border border-gray-200 hover:border-emerald-200 shadow-sm hover:shadow-md"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                         >
@@ -134,32 +135,95 @@ export const Header = () => {
                 {/* Mobile Menu */}
                 <AnimatePresence>
                     {isMenuOpen && (
-                        <motion.div
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: 'auto' }}
-                            exit={{ opacity: 0, height: 0 }}
-                            className="md:hidden bg-white/95 backdrop-blur-sm border-t border-emerald-100"
-                        >
-                            <div className="container mx-auto px-4 py-3">
-                                <nav className="flex flex-col space-y-3">
-                                    {navLinks.map((link) => (
-                                        <motion.a
-                                            key={link.name}
-                                            href={link.href}
-                                            className="text-gray-700 hover:text-emerald-600 transition-colors text-sm font-medium py-2 flex items-center space-x-3"
+                        <>
+                            {/* Blurred Background Overlay */}
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                className="fixed inset-0 bg-black/20 backdrop-blur-sm md:hidden"
+                                onClick={() => setIsMenuOpen(false)}
+                            />
+                            <motion.div
+                                initial={{ opacity: 0, y: -20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -20 }}
+                                className="fixed top-0 left-0 right-0 md:hidden bg-white/95 backdrop-blur-md shadow-[0_4px_12px_rgba(0,0,0,0.1)] z-50"
+                            >
+                                <div className="container mx-auto px-4 py-4">
+                                    <div className="flex justify-between items-center mb-4">
+                                        <div className="flex items-center space-x-2">
+                                            <svg
+                                                className="w-6 h-6 text-emerald-600"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                                <path
+                                                    d="M12 2L2 7L12 12L22 7L12 2Z"
+                                                    stroke="currentColor"
+                                                    strokeWidth="2"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
+                                                />
+                                                <path
+                                                    d="M2 17L12 22L22 17"
+                                                    stroke="currentColor"
+                                                    strokeWidth="2"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
+                                                />
+                                                <path
+                                                    d="M2 12L12 17L22 12"
+                                                    stroke="currentColor"
+                                                    strokeWidth="2"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
+                                                />
+                                            </svg>
+                                            <span className="text-lg font-bold text-gray-800">Menu</span>
+                                        </div>
+                                        <motion.button
                                             onClick={() => setIsMenuOpen(false)}
-                                            whileHover={{ x: 5 }}
+                                            className="p-2 rounded-lg text-gray-700 hover:bg-emerald-50 focus:outline-none transition-colors border border-gray-200 hover:border-emerald-200 shadow-sm hover:shadow-md"
+                                            whileHover={{ scale: 1.05 }}
+                                            whileTap={{ scale: 0.95 }}
                                         >
-                                            <link.icon className="text-emerald-600 text-base" />
-                                            <div className="flex items-center">
-                                                <span>{link.name}</span>
-                                                <span className="text-xs text-emerald-600 ml-1.5">({link.hindiName})</span>
-                                            </div>
-                                        </motion.a>
-                                    ))}
-                                </nav>
-                            </div>
-                        </motion.div>
+                                            <svg
+                                                className="w-5 h-5"
+                                                fill="none"
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                strokeWidth="2"
+                                                viewBox="0 0 24 24"
+                                                stroke="currentColor"
+                                            >
+                                                <path d="M6 18L18 6M6 6l12 12" />
+                                            </svg>
+                                        </motion.button>
+                                    </div>
+                                    <nav className="flex flex-col space-y-2">
+                                        {navLinks.map((link) => (
+                                            <motion.a
+                                                key={link.name}
+                                                href={link.href}
+                                                className="text-gray-700 hover:text-emerald-600 transition-all text-sm font-medium py-2.5 px-3 flex items-center space-x-3 rounded-lg hover:bg-emerald-50/50 border border-transparent hover:border-emerald-200/50 shadow-sm hover:shadow-md bg-white/80 backdrop-blur-sm"
+                                                onClick={() => setIsMenuOpen(false)}
+                                                whileHover={{ x: 5 }}
+                                            >
+                                                <div className="p-1.5 rounded-lg bg-emerald-50 shadow-[0_2px_8px_rgba(16,185,129,0.1)] border border-emerald-100/50">
+                                                    <link.icon className="text-emerald-600 text-base" />
+                                                </div>
+                                                <div className="flex items-center">
+                                                    <span>{link.name}</span>
+                                                    <span className="text-xs text-emerald-600 ml-1.5">({link.hindiName})</span>
+                                                </div>
+                                            </motion.a>
+                                        ))}
+                                    </nav>
+                                </div>
+                            </motion.div>
+                        </>
                     )}
                 </AnimatePresence>
             </div>

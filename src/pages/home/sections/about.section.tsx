@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaUsers, FaHome, FaSchool, FaLandmark, FaBook, FaHistory, FaHeart, FaShare } from 'react-icons/fa';
+import { FaUsers, FaHome, FaSchool, FaLandmark, FaBook, FaHistory, } from 'react-icons/fa';
 import { useState, useEffect } from 'react';
 import { aboutImage } from '../../../data/HomeData'
 
@@ -18,12 +18,12 @@ const AboutSection = () => {
     }, []);
 
     const stats = [
-        { icon: FaUsers, label: 'Total Population', hindiLabel: 'कुल जनसंख्या', value: '9,618', color: 'indigo' },
+        { icon: FaUsers, label: 'Total Population', hindiLabel: 'कुल जनसंख्या', value: '9,618', color: 'emerald' },
         { icon: FaHome, label: 'Number of Houses', hindiLabel: 'घरों की संख्या', value: '1,601', color: 'emerald' },
-        { icon: FaUsers, label: 'Female Population', hindiLabel: 'महिला जनसंख्या', value: '47.0%', color: 'rose' },
-        { icon: FaSchool, label: 'Literacy Rate', hindiLabel: 'साक्षरता दर', value: '60.3%', color: 'amber' },
-        { icon: FaUsers, label: 'Scheduled Tribes', hindiLabel: 'अनुसूचित जनजाति', value: '0.2%', color: 'violet' },
-        { icon: FaUsers, label: 'Scheduled Caste', hindiLabel: 'अनुसूचित जाति', value: '15.3%', color: 'blue' },
+        { icon: FaUsers, label: 'Female Population', hindiLabel: 'महिला जनसंख्या', value: '47.0%', color: 'emerald' },
+        { icon: FaSchool, label: 'Literacy Rate', hindiLabel: 'साक्षरता दर', value: '60.3%', color: 'emerald' },
+        { icon: FaUsers, label: 'Scheduled Tribes', hindiLabel: 'अनुसूचित जनजाति', value: '0.2%', color: 'emerald' },
+        { icon: FaUsers, label: 'Scheduled Caste', hindiLabel: 'अनुसूचित जाति', value: '15.3%', color: 'emerald' },
     ];
 
     const features = [
@@ -199,34 +199,6 @@ const AboutSection = () => {
                         </AnimatePresence>
                     </div>
                 </div>
-
-                {/* Action Buttons */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.4 }}
-                    className="mt-8 sm:mt-12 flex flex-wrap justify-center gap-3 sm:gap-4"
-                >
-                    <motion.button
-                        className="px-4 sm:px-6 py-2 sm:py-3 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-all text-sm sm:text-base shadow-[0_4px_12px_rgba(16,185,129,0.2)] hover:shadow-[0_6px_16px_rgba(16,185,129,0.3)] border border-emerald-500/20 hover:border-emerald-400/30 flex items-center gap-1.5 sm:gap-2"
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                    >
-                        <FaHeart className="text-emerald-100 text-sm sm:text-base" />
-                        <span>Learn More</span>
-                        <span className="text-emerald-100 text-xs sm:text-sm">(और जानें)</span>
-                    </motion.button>
-                    <motion.button
-                        className="px-4 sm:px-6 py-2 sm:py-3 border border-gray-200 text-gray-700 rounded-lg hover:bg-gray-50 transition-all text-sm sm:text-base shadow-[0_2px_8px_rgba(0,0,0,0.05)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.08)] hover:border-emerald-200 hover:text-emerald-700 flex items-center gap-1.5 sm:gap-2"
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                    >
-                        <FaShare className="text-emerald-600 text-sm sm:text-base" />
-                        <span>Share</span>
-                        <span className="text-emerald-600 text-xs sm:text-sm">(शेयर करें)</span>
-                    </motion.button>
-                </motion.div>
             </div>
         </section>
     );

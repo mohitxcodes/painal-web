@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { FaHome, FaUsers, FaMapMarkerAlt, FaSchool, FaBook } from 'react-icons/fa';
+import { Link } from 'react-router-dom'
 
 const HeroSection = () => {
     const [scrollY, setScrollY] = useState(0);
@@ -158,22 +159,20 @@ const HeroSection = () => {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.9 }}
                         >
-                            <motion.button
+                            <Link
+                                to="book"
                                 className="px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-all text-sm sm:text-base shadow-[0_4px_12px_rgba(16,185,129,0.2)] hover:shadow-[0_6px_16px_rgba(16,185,129,0.3)] border border-emerald-500/20 hover:border-emerald-400/30"
-                                whileHover={{ scale: 1.02 }}
-                                whileTap={{ scale: 0.98 }}
                             >
                                 <FaBook className="inline-block mr-2" />
                                 Our Book<span className="text-emerald-100">(गांव की कहानी)</span>
-                            </motion.button>
-                            <motion.button
+                            </Link>
+                            <Link
+                                to="/vanshavali"
                                 className="px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 border border-gray-200 text-gray-700 rounded-lg hover:bg-gray-50 transition-all text-sm sm:text-base shadow-[0_2px_8px_rgba(0,0,0,0.05)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.08)] hover:border-emerald-200 hover:text-emerald-700"
-                                whileHover={{ scale: 1.02 }}
-                                whileTap={{ scale: 0.98 }}
                             >
                                 <FaUsers className="inline-block mr-2" />
                                 Vanshavali<span className="text-emerald-600">(वंशावली)</span>
-                            </motion.button>
+                            </Link>
                         </motion.div>
                     </motion.div>
 
