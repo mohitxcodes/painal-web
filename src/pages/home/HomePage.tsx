@@ -1,9 +1,9 @@
-import AboutSection from "./sections/About.section";
+import AboutSection from "./sections/AboutSection";
 import ExploreMembers from "./sections/ExploreMembers";
-import GallerySection from "./sections/Gallery.section";
-import HeroSection from "./sections/Hero.section";
+import GallerySection from "./sections/GallerySection";
+import HeroSection from "./sections/HeroSection";
 
-export const HomePage = () => {
+function HomePage() {
     return (
         <div className="relative w-full overflow-hidden">
             {/* Base White Background */}
@@ -33,3 +33,6 @@ export const HomePage = () => {
         </div>
     );
 };
+
+
+export default HomePage;

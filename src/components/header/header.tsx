@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaHome, FaUsers, FaMapMarkerAlt, FaBook } from 'react-icons/fa';
 
-export const Header = () => {
+function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
 
@@ -229,3 +229,5 @@ export const Header = () => {
         </header>
     );
 };
+
+export default Header;

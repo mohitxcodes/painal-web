@@ -4,7 +4,7 @@ import './index.css'
 import App from './App.tsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import GalleryPage from './pages/gallery/GalleryPage.tsx'
-import { HomePage } from './pages/home/Home.page'
+import HomePage from './pages/home/HomePage.tsx'
 import AncestryPage from './pages/ancestry/AncestryPage.tsx'
 import FamilyTree from './pages/family-tree/FamilyPage.tsx'
 const router = createBrowserRouter([

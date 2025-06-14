@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import { FaHeart } from 'react-icons/fa';
-
-export const Footer = () => {
+function Footer() {
     const currentYear = new Date().getFullYear();
 
     const quickLinks = [
@@ -95,3 +94,5 @@ export const Footer = () => {
         </footer>
     );
 };
+
+export default Footer;
