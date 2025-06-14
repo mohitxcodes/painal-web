@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useRef, useEffect } from 'react';
-import { FaUsers, FaSearch, FaChevronDown, FaChevronRight, FaInfoCircle, FaUserFriends, FaTimes, FaHeart, FaShare, FaDownload, FaPrint, FaUser, FaCalendarAlt, FaBriefcase, FaChild } from 'react-icons/fa';
+import { FaUsers, FaSearch, FaChevronDown, FaChevronRight, FaInfoCircle, FaUserFriends, FaTimes, FaUser, FaCalendarAlt, FaBriefcase, FaChild } from 'react-icons/fa';
 import { AnimatedBackground } from '../../components/common/AnimatedBackground';
 import { IVillageMember } from '../../interface/IVillageMember';
 
@@ -8,14 +8,6 @@ const AncestryPage = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedPerson, setSelectedPerson] = useState<IVillageMember | null>(null);
     const [expandedNodes, setExpandedNodes] = useState<Set<number>>(new Set([1]));
-    const [, setConnections] = useState<{ from: number; to: number }[]>([]);
-    const [showHelp, setShowHelp] = useState(false);
-    const [showFilters, setShowFilters] = useState(false);
-    const [filters, setFilters] = useState({
-        generation: 'all',
-        occupation: 'all',
-        birthYearRange: [1940, 2022]
-    });
     const [familyData, setFamilyData] = useState<IVillageMember[]>([]);
     const [familyTitle, setFamilyTitle] = useState({ english: '', hindi: '' });
     const nodeRefs = useRef<{ [key: number]: HTMLDivElement | null }>({});
@@ -36,18 +28,7 @@ const AncestryPage = () => {
 
     // Enhanced search with multiple criteria
     const filteredFamilyData = familyData.filter(member => {
-        const matchesSearch = !searchTerm ||
-            member.name.toLowerCase().includes(searchTerm.toLowerCase());
-
-        const matchesGeneration = filters.generation === 'all' ||
-            (filters.generation === '1' && !member.parentId) ||
-            (filters.generation === '2' && member.parentId && !familyData.find(p => p.id === member.parentId)?.parentId) ||
-            (filters.generation === '3' && member.parentId && familyData.find(p => p.id === member.parentId)?.parentId);
-
-        const matchesOccupation = filters.occupation === 'all' ||
-            member.occupation?.toLowerCase() === filters.occupation.toLowerCase();
-
-        return matchesSearch && matchesGeneration && matchesOccupation;
+        return !searchTerm || member.name.toLowerCase().includes(searchTerm.toLowerCase());
     });
 
     // Get children for a member
@@ -124,14 +105,6 @@ const AncestryPage = () => {
                     <h3 className="text-lg font-semibold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
                         Family of {member.name}
                     </h3>
-                    <div className="flex space-x-2">
-                        <button className="p-2 text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors">
-                            <FaHeart />
-                        </button>
-                        <button className="p-2 text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors">
-                            <FaShare />
-                        </button>
-                    </div>
                 </div>
 
                 <div className="flex flex-col items-center">
@@ -372,22 +345,8 @@ const AncestryPage = () => {
         });
     };
 
-    useEffect(() => {
-        // Calculate connections between nodes
-        const newConnections: { from: number; to: number }[] = [];
-        familyData.forEach(member => {
-            if (member.parentId) {
-                newConnections.push({ from: member.parentId, to: member.id });
-            }
-        });
-        setConnections(newConnections);
-    }, []);
-
     return (
         <div className="relative min-h-screen w-full overflow-hidden py-10">
-            {/* Enhanced Background with multiple layers */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-green-50 via-emerald-50 to-teal-50 z-0"></div>
-            <div className="absolute inset-0 opacity-10 bg-[url('/assets/pattern-bg.png')] bg-repeat z-0"></div>
             <AnimatedBackground />
             <div className="absolute inset-0 bg-noise opacity-[0.03] mix-blend-overlay z-0"></div>
 
@@ -398,140 +357,42 @@ const AncestryPage = () => {
                     transition={{ duration: 0.8 }}
                     className="space-y-8"
                 >
-                    {/* Enhanced Header with Navigation */}
-                    <div className="text-center relative">
-                        <div className="absolute top-0 right-0 flex space-x-2">
-                            <button
-                                onClick={() => setShowHelp(!showHelp)}
-                                className="p-2 rounded-full hover:bg-white/50 transition-colors"
-                                title="Help"
-                            >
-                                <FaInfoCircle className="text-emerald-600 text-xl" />
-                            </button>
+                    {/* Simplified Header */}
+                    <div className="flex items-center justify-between gap-4 mb-6">
+                        <div className="flex items-center gap-3">
+                            <div className="flex flex-col">
+                                <h1 className="text-lg sm:text-xl font-semibold text-gray-900">
+                                    {familyTitle.english || 'Family Tree'}
+                                </h1>
+                                <span className="text-xs text-emerald-600">
+                                    ({familyTitle.hindi || 'वंशवृक्ष'})
+                                </span>
+                            </div>
+                            <div className="h-6 w-px bg-emerald-100"></div>
+                            <div className="flex items-center gap-1.5 px-2.5 py-1 bg-white rounded-md shadow-sm border border-emerald-100">
+                                <FaUsers className="text-emerald-600 text-sm" />
+                                <span className="text-sm font-medium text-gray-700">{familyData.length}</span>
+                                <span className="text-xs text-emerald-600">सदस्य</span>
+                            </div>
                         </div>
-                        <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent mb-2">
-                            {familyTitle.english || 'Family Tree'}
-                        </h1>
-                        <h2 className="text-2xl md:text-3xl text-emerald-600 mb-8">
-                            {familyTitle.hindi || 'वंशवृक्ष'}
-                        </h2>
-                    </div>
 
-                    {/* Enhanced Search and Filters */}
-                    <div className="flex flex-col md:flex-row gap-4 items-center justify-center">
+                        {/* Search Bar */}
                         <div className="relative flex-1 max-w-md">
                             <input
                                 type="text"
-                                placeholder="Search by name, occupation, or Hindi name..."
-                                className="w-full px-4 py-3 pl-10 rounded-xl border border-green-200/50 focus:outline-none focus:ring-2 focus:ring-emerald-500 shadow-sm bg-white/90 backdrop-blur-sm"
+                                placeholder="Search by name..."
+                                className="w-full px-3 py-1.5 pl-9 rounded-md border border-emerald-100 focus:outline-none focus:ring-2 focus:ring-emerald-500 shadow-sm bg-white text-sm"
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
                             />
-                            <FaSearch className="absolute left-3 top-3.5 text-emerald-600" />
+                            <FaSearch className="absolute left-2.5 top-2 text-emerald-600 text-sm" />
                             {searchTerm && (
-                                <div className="absolute right-3 top-3.5 text-sm text-emerald-600 font-medium">
+                                <div className="absolute right-2.5 top-2 text-xs text-emerald-600 font-medium">
                                     {filteredFamilyData.length} results
                                 </div>
                             )}
                         </div>
-                        <div className="flex space-x-2">
-                            <button
-                                onClick={() => window.print()}
-                                className="p-3 bg-white/90 backdrop-blur-sm rounded-xl hover:bg-white transition-all shadow-sm hover:shadow-md border border-green-200/50 hover:border-green-300/50"
-                                title="Print Family Tree"
-                            >
-                                <FaPrint className="text-emerald-600" />
-                            </button>
-                            <button
-                                onClick={() => {/* Add download functionality */ }}
-                                className="p-3 bg-white/90 backdrop-blur-sm rounded-xl hover:bg-white transition-all shadow-sm hover:shadow-md border border-green-200/50 hover:border-green-300/50"
-                                title="Download Family Tree"
-                            >
-                                <FaDownload className="text-emerald-600" />
-                            </button>
-                        </div>
                     </div>
-
-                    {/* Filters Panel */}
-                    <AnimatePresence>
-                        {showFilters && (
-                            <motion.div
-                                initial={{ opacity: 0, height: 0 }}
-                                animate={{ opacity: 1, height: 'auto' }}
-                                exit={{ opacity: 0, height: 0 }}
-                                className="bg-white/90 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-green-200/50"
-                            >
-                                <div className="flex justify-between items-center mb-4">
-                                    <h3 className="text-lg font-semibold text-emerald-600">Filters</h3>
-                                    <button
-                                        onClick={() => setShowFilters(false)}
-                                        className="p-2 hover:bg-emerald-50 rounded-lg transition-colors"
-                                    >
-                                        <FaTimes className="text-emerald-600" />
-                                    </button>
-                                </div>
-                                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                    <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-2">Generation</label>
-                                        <select
-                                            className="w-full px-3 py-2 rounded-lg border border-green-200/50 focus:outline-none focus:ring-2 focus:ring-emerald-500"
-                                            value={filters.generation}
-                                            onChange={(e) => setFilters({ ...filters, generation: e.target.value })}
-                                        >
-                                            <option value="all">All Generations</option>
-                                            <option value="1">First Generation</option>
-                                            <option value="2">Second Generation</option>
-                                            <option value="3">Third Generation</option>
-                                            <option value="4">Fourth Generation</option>
-                                        </select>
-                                    </div>
-                                    <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-2">Occupation</label>
-                                        <select
-                                            className="w-full px-3 py-2 rounded-lg border border-green-200/50 focus:outline-none focus:ring-2 focus:ring-emerald-500"
-                                            value={filters.occupation}
-                                            onChange={(e) => setFilters({ ...filters, occupation: e.target.value })}
-                                        >
-                                            <option value="all">All Occupations</option>
-                                            <option value="farmer">Farmer</option>
-                                            <option value="teacher">Teacher</option>
-                                            <option value="doctor">Doctor</option>
-                                            <option value="engineer">Engineer</option>
-                                            <option value="student">Student</option>
-                                        </select>
-                                    </div>
-                                    <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-2">Birth Year Range</label>
-                                        <div className="flex items-center space-x-2">
-                                            <input
-                                                type="number"
-                                                className="w-full px-3 py-2 rounded-lg border border-green-200/50 focus:outline-none focus:ring-2 focus:ring-emerald-500"
-                                                value={filters.birthYearRange[0]}
-                                                onChange={(e) => setFilters({
-                                                    ...filters,
-                                                    birthYearRange: [parseInt(e.target.value), filters.birthYearRange[1]]
-                                                })}
-                                                min="1940"
-                                                max="2022"
-                                            />
-                                            <span className="text-gray-500">to</span>
-                                            <input
-                                                type="number"
-                                                className="w-full px-3 py-2 rounded-lg border border-green-200/50 focus:outline-none focus:ring-2 focus:ring-emerald-500"
-                                                value={filters.birthYearRange[1]}
-                                                onChange={(e) => setFilters({
-                                                    ...filters,
-                                                    birthYearRange: [filters.birthYearRange[0], parseInt(e.target.value)]
-                                                })}
-                                                min="1940"
-                                                max="2022"
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-                            </motion.div>
-                        )}
-                    </AnimatePresence>
 
                     {/* Search Results */}
                     {searchTerm && (
@@ -669,26 +530,6 @@ const AncestryPage = () => {
                                                 </div>
                                             </div>
                                         )}
-
-                                        {/* Action Buttons */}
-                                        <div className="flex flex-wrap justify-center gap-3">
-                                            <button className="px-3 py-1.5 text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors flex items-center gap-1.5 text-sm">
-                                                <FaHeart className="text-sm" />
-                                                <span>Favorite</span>
-                                            </button>
-                                            <button className="px-3 py-1.5 text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors flex items-center gap-1.5 text-sm">
-                                                <FaShare className="text-sm" />
-                                                <span>Share</span>
-                                            </button>
-                                            <button className="px-3 py-1.5 text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors flex items-center gap-1.5 text-sm">
-                                                <FaDownload className="text-sm" />
-                                                <span>Download</span>
-                                            </button>
-                                            <button className="px-3 py-1.5 text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors flex items-center gap-1.5 text-sm">
-                                                <FaPrint className="text-sm" />
-                                                <span>Print</span>
-                                            </button>
-                                        </div>
                                     </div>
                                 </motion.div>
                             </>
