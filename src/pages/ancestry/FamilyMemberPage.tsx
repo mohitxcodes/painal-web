@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useRef, useEffect } from 'react';
-import { FaUsers, FaSearch, FaChevronDown, FaChevronRight, FaInfoCircle, FaUserFriends, FaTimes, FaUser, FaCalendarAlt, FaBriefcase, FaChild } from 'react-icons/fa';
+import { FaUsers, FaSearch, FaChevronDown, FaChevronRight, FaInfoCircle, FaUserFriends, FaTimes, FaUser, FaCalendarAlt, FaChild } from 'react-icons/fa';
 import { AnimatedBackground } from '../../components/common/AnimatedBackground';
 import { IVillageMember } from '../../interface/IVillageMember';
 
@@ -95,48 +95,6 @@ const AncestryPage = () => {
         );
     };
 
-    const renderSearchResult = (member: IVillageMember) => {
-        const parent = getParent(member);
-
-        return (
-            <motion.div
-                key={member.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="bg-white rounded-xl p-4 shadow-md border border-gray-100 hover:border-emerald-200 transition-all duration-300 cursor-pointer w-full flex items-center gap-4"
-                whileHover={{ y: -2, scale: 1.01 }}
-                onClick={() => setSelectedPerson(member)}
-            >
-                <Avatar src={member.profilePhoto} alt={member.name} size="md" className="ring-2 ring-emerald-100/50 group-hover:ring-emerald-200 transition-all duration-300 flex-shrink-0" />
-
-                <div className="flex-1 min-w-0">
-                    <div className="flex items-center justify-between">
-                        <div>
-                            <h3 className="text-base font-semibold text-gray-800 truncate">{member.name}</h3>
-                            <p className="text-xs text-emerald-600 truncate">{member.hindiName}</p>
-                        </div>
-                        {parent && (
-                            <div className="flex items-center text-xs text-gray-600 space-x-1 ml-4 flex-shrink-0">
-                                <FaUser className="text-emerald-500 text-[10px]" />
-                                <span className="font-medium">Father:</span>
-                                <span className="truncate max-w-[100px]">{parent.name}</span>
-                            </div>
-                        )}
-                    </div>
-
-                    {member.children.length > 0 && (
-                        <div className="flex items-center text-xs text-gray-600 space-x-1 mt-1">
-                            <FaChild className="text-emerald-500 text-[10px]" />
-                            <span className="font-medium">Children:</span>
-                            <span>{member.children.length}</span>
-                        </div>
-                    )}
-                </div>
-            </motion.div>
-        );
-    };
-
     const renderFamilyMember = (member: IVillageMember, level: number = 0) => {
         const hasChildren = member.children.length > 0;
         const isExpanded = expandedNodes.has(member.id);
@@ -155,52 +113,60 @@ const AncestryPage = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
-                        className={`group/familycard bg-white rounded-2xl p-4 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer border-2 ${isMatched
+                        className={`group/familycard bg-white rounded-2xl p-2 sm:p-3 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer border-2 ${isMatched
                             ? 'border-emerald-500 shadow-xl scale-105'
                             : 'border-emerald-100 hover:border-emerald-300'
-                            } relative w-[230px] flex flex-col items-center mt-6`}
+                            } relative w-40 sm:w-48 md:w-56 lg:w-[230px] flex flex-col items-center mt-6`}
                         whileHover={{ y: -2, scale: 1.03 }}
                         onClick={() => setSelectedPerson(member)}
                     >
                         {/* Generation Indicator */}
-                        <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-emerald-500 text-white text-xs px-3 py-1 rounded-full shadow-sm font-semibold tracking-wide z-10">
+                        <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-emerald-500 text-white text-[9px] px-2 py-0.5 rounded-full shadow-sm font-semibold tracking-wide z-10">
                             Gen {level + 1}
                         </div>
                         <div className="flex flex-col items-center text-center w-full pb-2">
-                            <div className="mb-2">
-                                <Avatar src={member.profilePhoto} alt={member.name} size="md" className="ring-2 ring-emerald-100 group-hover/familycard:ring-emerald-400 transition-all duration-200" />
+                            <div className="mb-1">
+                                <Avatar src={member.profilePhoto} alt={member.name} size="sm" className="ring-2 ring-emerald-100 group-hover/familycard:ring-emerald-400 transition-all duration-200" />
                             </div>
                             <div className="w-full">
-                                <h3 className={`text-lg font-bold ${isMatched ? 'text-emerald-700' : 'text-gray-900'} truncate`}>{member.name}</h3>
-                                <span className="block text-xs text-emerald-600 font-medium mt-0.5 truncate">({member.hindiName})</span>
-                                <div className="mt-2 flex items-center justify-center gap-1.5">
-                                    <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-emerald-50 text-emerald-700 text-xs rounded-full font-medium border border-emerald-100">
-                                        <svg className="w-3 h-3 text-emerald-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 4h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2z" /></svg>
+                                <h3 className={`text-sm sm:text-base font-bold ${isMatched ? 'text-emerald-700' : 'text-gray-900'} truncate`}>{member.name}</h3>
+                                <span className="block text-[9px] sm:text-xs text-emerald-600 font-medium mt-0.5 truncate">({member.hindiName})</span>
+                                <div className="mt-1 flex items-center justify-center gap-1">
+                                    <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 bg-emerald-50 text-emerald-700 text-[9px] rounded-full font-medium border border-emerald-100">
+                                        <svg className="w-2.5 h-2.5 text-emerald-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 4h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2z" /></svg>
                                         {member.birthYear}
                                     </span>
                                 </div>
                             </div>
                         </div>
                         {/* Quick Info Tooltip */}
-                        <div className="absolute top-2 right-2 opacity-0 group-hover/familycard:opacity-100 transition-opacity">
-                            <FaInfoCircle className="text-emerald-400" />
+                        <div className="absolute top-1 right-1 opacity-0 group-hover/familycard:opacity-100 transition-opacity">
+                            <FaInfoCircle className="text-emerald-400 text-sm" />
                         </div>
                     </motion.div>
 
-                    {hasChildren && (
+                    {hasChildren ? (
                         <button
                             onClick={(e) => {
                                 e.stopPropagation();
                                 toggleNode(member.id);
                             }}
-                            className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 shadow-md rounded-full p-2 z-10 transition-all duration-200 flex items-center justify-center"
+                            className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 shadow-md rounded-full p-1.5 z-10 transition-all duration-200 flex items-center justify-center"
                             title={isExpanded ? "Collapse" : "Expand"}
                         >
                             {isExpanded ? (
-                                <FaChevronDown className="text-emerald-600 text-lg" />
+                                <FaChevronDown className="text-emerald-600 text-base" />
                             ) : (
-                                <FaChevronRight className="text-emerald-600 text-lg" />
+                                <FaChevronRight className="text-emerald-600 text-base" />
                             )}
+                        </button>
+                    ) : (
+                        <button
+                            className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-red-50 border border-red-200 shadow-md rounded-full p-1.5 z-10 flex items-center justify-center cursor-not-allowed"
+                            title="No children"
+                            disabled
+                        >
+                            <FaTimes className="text-red-400 text-base" />
                         </button>
                     )}
                 </div>
@@ -242,46 +208,40 @@ const AncestryPage = () => {
                     className="space-y-8"
                 >
                     {/* Modern Integrated Header */}
-                    <div className="relative mb-4">
-                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div className="relative mb-6 sm:mb-8">
+                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
                             {/* Left Section - Family Info */}
-                            <div className="flex items-center gap-4">
-                                <div className="flex flex-col">
-                                    <div className="flex items-center gap-3">
-                                        <div className="flex items-center gap-2">
-                                            <h1 className="text-xl sm:text-2xl font-bold text-gray-900">
-                                                {familyTitle.english || 'Family Tree'}
-                                            </h1>
-                                            <span className="text-sm text-emerald-600 font-medium mt-0.5">
-                                                {familyTitle.hindi || 'वंशवृक्ष'}
-                                            </span>
-                                        </div>
-                                        <div className="h-8 w-px bg-gradient-to-b from-emerald-200 to-emerald-100/50"></div>
-                                        <div className="flex items-center gap-2">
-                                            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-50/80 rounded-lg">
-                                                <FaUsers className="text-emerald-600" />
-                                                <span className="text-base font-semibold text-gray-900">{familyData.length}</span>
-                                                <span className="text-sm text-emerald-600">सदस्य</span>
-                                            </div>
-                                        </div>
-                                    </div>
+                            <div className="flex items-center gap-3 sm:gap-4">
+                                <div className="flex items-center gap-2">
+                                    <h1 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900">
+                                        {familyTitle.english || 'Family Tree'}
+                                    </h1>
+                                    <span className="text-xs sm:text-sm text-emerald-600 font-medium">
+                                        ({familyTitle.hindi || 'वंशवृक्ष'})
+                                    </span>
+                                </div>
+                                <div className="h-5 w-px bg-gradient-to-b from-emerald-200 to-emerald-100/50 mx-1 sm:mx-2"></div>
+                                <div className="flex items-center gap-1.5 px-2.5 py-1 bg-emerald-50/80 rounded-lg">
+                                    <FaUsers className="text-emerald-600 text-sm sm:text-base" />
+                                    <span className="text-sm sm:text-base font-semibold text-gray-900">{familyData.length}</span>
+                                    <span className="text-xs sm:text-sm text-emerald-600">सदस्य</span>
                                 </div>
                             </div>
 
                             {/* Right Section - Search */}
-                            <div className="relative flex-1 max-w-md">
+                            <div className="relative flex-1 max-w-sm sm:max-w-md lg:max-w-lg">
                                 <div className="relative">
                                     <input
                                         type="text"
                                         placeholder="Search family members..."
-                                        className="w-full px-4 py-2.5 pl-11 pr-28 rounded-xl border-0 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 bg-white/80 backdrop-blur-sm text-sm transition-all duration-200 shadow-[0_2px_8px_rgba(0,0,0,0.04)]"
+                                        className="w-full px-4 py-2 sm:py-2.5 pl-11 pr-24 rounded-xl border-0 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 bg-white/80 backdrop-blur-sm text-sm transition-all duration-200 shadow-[0_2px_8px_rgba(0,0,0,0.04)]"
                                         value={searchTerm}
                                         onChange={(e) => setSearchTerm(e.target.value)}
                                     />
                                     <div className="absolute inset-0 rounded-xl border border-emerald-100/50 pointer-events-none"></div>
-                                    <FaSearch className="absolute left-4 top-3 text-emerald-600" />
+                                    <FaSearch className="absolute left-4 top-2.5 sm:top-3 text-emerald-600 text-sm" />
                                     {searchTerm && (
-                                        <div className="absolute right-3 top-2 text-xs font-medium bg-emerald-50 text-emerald-600 px-2.5 py-1 rounded-full">
+                                        <div className="absolute right-3 top-2 text-xs sm:text-sm font-medium bg-emerald-50 text-emerald-600 px-2.5 py-1 rounded-full">
                                             {filteredFamilyData.length} results
                                         </div>
                                     )}
@@ -296,13 +256,55 @@ const AncestryPage = () => {
                         <motion.div
                             initial={{ opacity: 0, y: -10 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="space-y-6"
+                            className="space-y-4 sm:space-y-6"
                         >
                             {filteredFamilyData.length > 0 ? (
-                                filteredFamilyData.map(member => renderSearchResult(member))
+                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4">
+                                    {filteredFamilyData.map(member => (
+                                        <motion.div
+                                            key={member.id}
+                                            initial={{ opacity: 0, y: 20 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            transition={{ duration: 0.5 }}
+                                            className="bg-white rounded-xl p-3 sm:p-4 shadow-md border border-gray-100 hover:border-emerald-200 transition-all duration-300 cursor-pointer w-full flex items-center gap-3 sm:gap-4"
+                                            whileHover={{ y: -2, scale: 1.01 }}
+                                            onClick={() => setSelectedPerson(member)}
+                                        >
+                                            <Avatar src={member.profilePhoto} alt={member.name} size="md" className="ring-2 ring-emerald-100/50 group-hover:ring-emerald-200 transition-all duration-300 flex-shrink-0" />
+
+                                            <div className="flex-1 min-w-0">
+                                                <div className="flex flex-col items-start gap-1">
+                                                    <div className="min-w-0">
+                                                        <h3 className="text-sm sm:text-base font-semibold text-gray-800 truncate">{member.name}</h3>
+                                                        <p className="text-[10px] sm:text-xs text-emerald-600 truncate">{member.hindiName}</p>
+                                                    </div>
+                                                    {getParent(member) && (
+                                                        <div className="flex items-center text-[10px] sm:text-xs text-gray-600 space-x-1 mt-1 flex-shrink-0">
+                                                            <FaUser className="text-emerald-500 text-[8px] sm:text-[10px]" />
+                                                            <span className="font-medium">Father:</span>
+                                                            <span className="truncate max-w-[80px]">{getParent(member)?.name}</span>
+                                                        </div>
+                                                    )}
+                                                </div>
+
+                                                {member.children.length > 0 && (
+                                                    <div className="flex items-center text-[10px] sm:text-xs text-gray-600 space-x-1 mt-1">
+                                                        <FaChild className="text-emerald-500 text-[8px] sm:text-[10px]" />
+                                                        <span className="font-medium">Children:</span>
+                                                        <span>{member.children.length}</span>
+                                                    </div>
+                                                )}
+                                            </div>
+                                        </motion.div>
+                                    ))}
+                                </div>
                             ) : (
-                                <div className="text-center py-8">
-                                    <p className="text-gray-600">No results found for "{searchTerm}"</p>
+                                <div className="text-center py-6 sm:py-8 bg-white rounded-lg shadow-[0_2px_8px_rgba(0,0,0,0.04)] border border-gray-200/80">
+                                    <div className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-2 sm:mb-3 rounded-lg bg-gray-50 flex items-center justify-center border border-gray-200/80">
+                                        <FaSearch className="text-lg sm:text-xl md:text-2xl text-gray-400" />
+                                    </div>
+                                    <p className="text-xs sm:text-sm md:text-base text-gray-600">No results found for "{searchTerm}"</p>
+                                    <p className="text-[10px] sm:text-xs md:text-sm text-emerald-600 mt-1">कोई परिणाम नहीं मिले</p>
                                 </div>
                             )}
                         </motion.div>
@@ -310,10 +312,10 @@ const AncestryPage = () => {
 
                     {/* Full Family Tree Visualization */}
                     {!searchTerm && (
-                        <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-[0_2px_12px_rgba(0,0,0,0.04)] border border-emerald-100/50">
+                        <div className="bg-white rounded-2xl p-4 sm:p-6 lg:p-8 shadow-[0_2px_12px_rgba(0,0,0,0.04)] border border-emerald-100/50">
                             <div className="overflow-x-auto pb-4">
-                                <div className="min-w-max px-4">
-                                    <div className="flex flex-wrap justify-center gap-8 sm:gap-12">
+                                <div className="min-w-max px-2 sm:px-4">
+                                    <div className="flex flex-wrap justify-center gap-6 sm:gap-8 lg:gap-12">
                                         {familyData.filter(member => !member.parentId).map(member => renderFamilyMember(member))}
                                     </div>
                                 </div>
@@ -340,7 +342,7 @@ const AncestryPage = () => {
                                     animate={{ y: 0 }}
                                     exit={{ y: '100%' }}
                                     transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-                                    className="fixed inset-x-0 bottom-0 bg-white rounded-t-2xl shadow-2xl z-[10000] max-h-[90vh] overflow-hidden"
+                                    className="fixed inset-x-0 bottom-0 bg-white rounded-t-2xl shadow-2xl z-[10002] max-h-[90vh] overflow-y-auto"
                                 >
                                     {/* Handle Bar */}
                                     <div className="sticky top-0 bg-white border-b border-gray-200 p-4 flex flex-col items-center rounded-t-3xl">
