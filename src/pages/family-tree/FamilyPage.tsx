@@ -25,6 +25,7 @@ const FamilyTree = () => {
         localStorage.setItem('selectedFamilyData', JSON.stringify(family.familyMembers));
         localStorage.setItem('selectedFamilyTitle', JSON.stringify({
             english: family.name,
+            hindi: family.hindiName || ''
         }));
         if (searchTerm) {
             localStorage.setItem('ancestrySearchTerm', searchTerm);

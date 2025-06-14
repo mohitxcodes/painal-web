@@ -16,6 +16,7 @@ const AncestryPage = () => {
         // Get family data from localStorage
         const storedFamilyData = localStorage.getItem('selectedFamilyData');
         const storedFamilyTitle = localStorage.getItem('selectedFamilyTitle');
+        const storedSearchTerm = localStorage.getItem('ancestrySearchTerm');
 
         if (storedFamilyData) {
             setFamilyData(JSON.parse(storedFamilyData));
@@ -23,6 +24,11 @@ const AncestryPage = () => {
 
         if (storedFamilyTitle) {
             setFamilyTitle(JSON.parse(storedFamilyTitle));
+        }
+
+        if (storedSearchTerm) {
+            setSearchTerm(storedSearchTerm);
+            localStorage.removeItem('ancestrySearchTerm'); // Clear it after use
         }
     }, []);
 
@@ -90,168 +96,41 @@ const AncestryPage = () => {
     };
 
     const renderSearchResult = (member: IVillageMember) => {
-        const children = getChildren(member);
         const parent = getParent(member);
-        const siblings = getSiblings(member);
 
         return (
             <motion.div
                 key={member.id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="bg-gradient-to-br from-white/95 to-green-50/95 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-green-200/50 hover:border-green-300/50 transition-all duration-300 w-full"
+                transition={{ duration: 0.5 }}
+                className="bg-white rounded-xl p-4 shadow-md border border-gray-100 hover:border-emerald-200 transition-all duration-300 cursor-pointer w-full flex items-center gap-4"
+                whileHover={{ y: -2, scale: 1.01 }}
+                onClick={() => setSelectedPerson(member)}
             >
-                <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-lg font-semibold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
-                        Family of {member.name}
-                    </h3>
-                </div>
+                <Avatar src={member.profilePhoto} alt={member.name} size="md" className="ring-2 ring-emerald-100/50 group-hover:ring-emerald-200 transition-all duration-300 flex-shrink-0" />
 
-                <div className="flex flex-col items-center">
-                    {/* Main Member Card */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5 }}
-                        className="bg-gradient-to-br from-white to-green-50/80 backdrop-blur-sm rounded-xl p-4 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer border-2 border-green-200/50 hover:border-green-300/50 relative w-[280px]"
-                        whileHover={{ y: -2, scale: 1.02 }}
-                        onClick={() => setSelectedPerson(member)}
-                    >
-                        <div className="flex flex-col items-center text-center">
-                            <Avatar src={member.profilePhoto} alt={member.name} size="lg" className="mb-3" />
-                            <h3 className="text-base font-semibold text-gray-800 line-clamp-1">
-                                {member.name}
-                            </h3>
-                            <p className="text-sm text-green-600 line-clamp-1 mt-1">{member.hindiName}</p>
-                            <div className="flex items-center space-x-2 mt-2">
-                                <span className="text-xs text-gray-500 bg-gray-50 px-2 py-1 rounded-full">
-                                    Born: {member.birthYear}
-                                </span>
-                                <span className="text-xs text-emerald-600 bg-emerald-50 px-2 py-1 rounded-full">
-                                    {member.occupation}
-                                </span>
-                            </div>
+                <div className="flex-1 min-w-0">
+                    <div className="flex items-center justify-between">
+                        <div>
+                            <h3 className="text-base font-semibold text-gray-800 truncate">{member.name}</h3>
+                            <p className="text-xs text-emerald-600 truncate">{member.hindiName}</p>
                         </div>
-                    </motion.div>
-
-                    {/* Parent Section */}
-                    {parent && (
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: 0.1 }}
-                            className="mt-8 w-full"
-                        >
-                            <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
-                                <FaUsers className="text-green-600" />
-                                Parent
-                            </h3>
-                            <div className="flex justify-center">
-                                <motion.div
-                                    className="bg-white rounded-xl p-4 shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300 cursor-pointer"
-                                    whileHover={{ y: -2 }}
-                                    onClick={() => setSelectedPerson(parent)}
-                                >
-                                    <div className="flex items-center gap-4">
-                                        <Avatar src={parent.profilePhoto} alt={parent.name} size="md" />
-                                        <div className="flex-1 min-w-0">
-                                            <h4 className="font-medium text-gray-800 truncate">{parent.name}</h4>
-                                            <p className="text-sm text-green-600 truncate">{parent.hindiName}</p>
-                                            <div className="flex items-center gap-2 mt-1">
-                                                <span className="text-xs text-gray-500 bg-gray-50 px-2 py-1 rounded-full">
-                                                    Born: {parent.birthYear}
-                                                </span>
-                                                <span className="text-xs text-emerald-600 bg-emerald-50 px-2 py-1 rounded-full">
-                                                    {parent.occupation}
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </motion.div>
+                        {parent && (
+                            <div className="flex items-center text-xs text-gray-600 space-x-1 ml-4 flex-shrink-0">
+                                <FaUser className="text-emerald-500 text-[10px]" />
+                                <span className="font-medium">Father:</span>
+                                <span className="truncate max-w-[100px]">{parent.name}</span>
                             </div>
-                        </motion.div>
-                    )}
+                        )}
+                    </div>
 
-                    {/* Siblings Section */}
-                    {siblings.length > 0 && (
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: 0.15 }}
-                            className="mt-8 w-full"
-                        >
-                            <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
-                                <FaUsers className="text-green-600" />
-                                Siblings
-                            </h3>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                                {siblings.map((sibling) => (
-                                    <motion.div
-                                        key={sibling.id}
-                                        className="bg-white rounded-xl p-4 shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300 cursor-pointer"
-                                        whileHover={{ y: -2 }}
-                                        onClick={() => setSelectedPerson(sibling)}
-                                    >
-                                        <div className="flex items-center gap-4">
-                                            <Avatar src={sibling.profilePhoto} alt={sibling.name} size="md" />
-                                            <div className="flex-1 min-w-0">
-                                                <h4 className="font-medium text-gray-800 truncate">{sibling.name}</h4>
-                                                <p className="text-sm text-green-600 truncate">{sibling.hindiName}</p>
-                                                <div className="flex items-center gap-2 mt-1">
-                                                    <span className="text-xs text-gray-500 bg-gray-50 px-2 py-1 rounded-full">
-                                                        Born: {sibling.birthYear}
-                                                    </span>
-                                                    <span className="text-xs text-emerald-600 bg-emerald-50 px-2 py-1 rounded-full">
-                                                        {sibling.occupation}
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </motion.div>
-                                ))}
-                            </div>
-                        </motion.div>
-                    )}
-
-                    {/* Children Section */}
-                    {children.length > 0 && (
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: 0.2 }}
-                            className="mt-8 w-full"
-                        >
-                            <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
-                                <FaUsers className="text-green-600" />
-                                Children
-                            </h3>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                                {children.map((child) => (
-                                    <motion.div
-                                        key={child.id}
-                                        className="bg-white rounded-xl p-4 shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300 cursor-pointer"
-                                        whileHover={{ y: -2 }}
-                                        onClick={() => setSelectedPerson(child)}
-                                    >
-                                        <div className="flex items-center gap-4">
-                                            <Avatar src={child.profilePhoto} alt={child.name} size="md" />
-                                            <div className="flex-1 min-w-0">
-                                                <h4 className="font-medium text-gray-800 truncate">{child.name}</h4>
-                                                <p className="text-sm text-green-600 truncate">{child.hindiName}</p>
-                                                <div className="flex items-center gap-2 mt-1">
-                                                    <span className="text-xs text-gray-500 bg-gray-50 px-2 py-1 rounded-full">
-                                                        Born: {child.birthYear}
-                                                    </span>
-                                                    <span className="text-xs text-emerald-600 bg-emerald-50 px-2 py-1 rounded-full">
-                                                        {child.occupation}
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </motion.div>
-                                ))}
-                            </div>
-                        </motion.div>
+                    {member.children.length > 0 && (
+                        <div className="flex items-center text-xs text-gray-600 space-x-1 mt-1">
+                            <FaChild className="text-emerald-500 text-[10px]" />
+                            <span className="font-medium">Children:</span>
+                            <span>{member.children.length}</span>
+                        </div>
                     )}
                 </div>
             </motion.div>
@@ -504,7 +383,7 @@ const AncestryPage = () => {
                                         </div>
 
                                         {/* Family Relationships */}
-                                        <div className="space-y-4 sm:space-y-6 overflow-y-auto max-h-[calc(100vh-280px)] pr-2">
+                                        <div className="space-y-4 sm:space-y-6 overflow-y-auto max-h-[calc(100vh-400px)] pr-2">
                                             {/* Parents Section */}
                                             {getParent(selectedPerson) && (
                                                 <div>
@@ -513,7 +392,7 @@ const AncestryPage = () => {
                                                         Parents
                                                         <span className="text-xs sm:text-sm text-emerald-600 font-normal">(माता-पिता)</span>
                                                     </h4>
-                                                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3">
+                                                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 overflow-x-auto pb-2">
                                                         {getParent(selectedPerson) && (
                                                             <motion.div
                                                                 className="bg-white rounded-xl p-2 sm:p-3 shadow-sm border border-emerald-100/50 hover:border-emerald-200 hover:shadow-md transition-all duration-300 cursor-pointer group"
@@ -561,7 +440,7 @@ const AncestryPage = () => {
                                                         Siblings
                                                         <span className="text-xs sm:text-sm text-emerald-600 font-normal">(भाई-बहन)</span>
                                                     </h4>
-                                                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3">
+                                                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 overflow-x-auto pb-2">
                                                         {getSiblings(selectedPerson).map(sibling => (
                                                             <motion.div
                                                                 key={sibling.id}
@@ -603,7 +482,7 @@ const AncestryPage = () => {
                                                         Children
                                                         <span className="text-xs sm:text-sm text-emerald-600 font-normal">(बच्चे)</span>
                                                     </h4>
-                                                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3">
+                                                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 overflow-x-auto pb-2">
                                                         {getChildren(selectedPerson).map(child => (
                                                             <motion.div
                                                                 key={child.id}
