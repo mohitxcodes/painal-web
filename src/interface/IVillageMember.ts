@@ -2,9 +2,9 @@ export interface IVillageMember {
     id: number;
     name: string;
     hindiName: string;
-    fatherName: string;
-    fatherNameHindi: string;
-    birthYear?: number;
+    fatherName?: string;
+    fatherNameHindi?: string;
+    birthYear?: string;
     children: number[];
     parentId?: number;
     spouse?: string;

@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useRef, useEffect } from 'react';
-import { FaUsers, FaSearch, FaChevronDown, FaChevronRight, FaInfoCircle, FaHome, FaUserFriends, FaMapMarkerAlt, FaFilter, FaTimes, FaHeart, FaShare, FaDownload, FaPrint, FaUser, FaCalendarAlt, FaBriefcase, FaChild } from 'react-icons/fa';
+import { FaUsers, FaSearch, FaChevronDown, FaChevronRight, FaInfoCircle, FaUserFriends, FaTimes, FaHeart, FaShare, FaDownload, FaPrint, FaUser, FaCalendarAlt, FaBriefcase, FaChild } from 'react-icons/fa';
 import { AnimatedBackground } from '../../components/common/AnimatedBackground';
 import { IVillageMember } from '../../interface/IVillageMember';
 
@@ -8,7 +8,7 @@ const AncestryPage = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedPerson, setSelectedPerson] = useState<IVillageMember | null>(null);
     const [expandedNodes, setExpandedNodes] = useState<Set<number>>(new Set([1]));
-    const [connections, setConnections] = useState<{ from: number; to: number }[]>([]);
+    const [, setConnections] = useState<{ from: number; to: number }[]>([]);
     const [showHelp, setShowHelp] = useState(false);
     const [showFilters, setShowFilters] = useState(false);
     const [filters, setFilters] = useState({

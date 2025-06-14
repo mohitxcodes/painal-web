@@ -2,7 +2,6 @@ import AboutSection from "./sections/About.section";
 import ExploreMembers from "./sections/ExploreMembers";
 import GallerySection from "./sections/Gallery.section";
 import HeroSection from "./sections/Hero.section";
-import { AnimatedBackground } from "../../components/common/AnimatedBackground";
 
 export const HomePage = () => {
     return (

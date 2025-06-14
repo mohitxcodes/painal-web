@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { FaUsers, FaSearch, FaHome, FaUserFriends, FaHeart, FaShare, FaChild, FaUser, FaUserPlus, } from 'react-icons/fa';
+import { FaUsers, FaSearch, FaUserFriends, FaUser, } from 'react-icons/fa';
 import { AnimatedBackground } from '../../components/common/AnimatedBackground.tsx';
 import { useNavigate } from 'react-router-dom';
 import { families } from '../../data/FamilyMemberData.ts'
