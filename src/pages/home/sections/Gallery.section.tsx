@@ -10,10 +10,8 @@ const GallerySection = () => {
 
     const categories = [
         { id: 'all', name: 'All', hindiName: 'सभी' },
-        { id: 'religious', name: 'Religious', hindiName: 'धार्मिक' },
-        { id: 'community', name: 'Community', hindiName: 'समुदाय' },
-        { id: 'nature', name: 'Nature', hindiName: 'प्रकृति' },
-        { id: 'education', name: 'Education', hindiName: 'शिक्षा' }
+        { id: 'temples', name: 'Temples', hindiName: 'मंदिर' },
+        { id: 'schools', name: 'Schools', hindiName: 'स्कूल' },
     ];
 
 
@@ -61,33 +59,46 @@ const GallerySection = () => {
                     </motion.p>
                 </div>
 
-                {/* Category Filter */}
-                <div className="max-w-4xl mx-auto mb-4 sm:mb-8">
+                {/* Category Filter with Explore Button */}
+                <div className="max-w-7xl mx-auto mb-4 sm:mb-8">
                     <div className="bg-white/80 backdrop-blur-sm rounded-xl p-2 sm:p-4 shadow-[0_4px_12px_rgba(0,0,0,0.05)] border border-gray-100">
-                        <div className="flex gap-1.5 sm:gap-2 overflow-x-auto pb-1 sm:pb-2">
-                            {categories.map((category) => (
-                                <motion.button
-                                    key={category.id}
-                                    onClick={() => setActiveFilter(category.id)}
-                                    className={`px-2 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium whitespace-nowrap transition-all ${activeFilter === category.id
-                                        ? 'bg-emerald-600 text-white shadow-[0_4px_12px_rgba(16,185,129,0.2)] border border-emerald-500/20'
-                                        : 'bg-gray-100 text-gray-600 hover:bg-gray-200 border border-transparent hover:border-emerald-200/50'
-                                        }`}
-                                    whileHover={{ scale: 1.02 }}
-                                    whileTap={{ scale: 0.98 }}
-                                >
-                                    {category.name}
-                                    <span className="text-[10px] sm:text-xs opacity-80 ml-1">({category.hindiName})</span>
-                                </motion.button>
-                            ))}
+                        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4">
+                            <div className="flex gap-1.5 sm:gap-2 overflow-x-auto scrollbar-none">
+                                {categories.map((category) => (
+                                    <motion.button
+                                        key={category.id}
+                                        onClick={() => setActiveFilter(category.id)}
+                                        className={`px-2.5 sm:px-3 md:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium whitespace-nowrap transition-all flex-shrink-0 ${activeFilter === category.id
+                                            ? 'bg-emerald-600 text-white shadow-[0_4px_12px_rgba(16,185,129,0.2)] border border-emerald-500/20'
+                                            : 'bg-gray-100 text-gray-600 hover:bg-gray-200 border border-transparent hover:border-emerald-200/50'
+                                            }`}
+                                        whileHover={{ scale: 1.02 }}
+                                        whileTap={{ scale: 0.98 }}
+                                    >
+                                        {category.name}
+                                        <span className="text-[10px] sm:text-xs opacity-80 ml-1">({category.hindiName})</span>
+                                    </motion.button>
+                                ))}
+                            </div>
+                            <motion.button
+                                className="w-full sm:w-auto px-3 sm:px-4 py-2 sm:py-2.5 bg-emerald-600 text-white rounded-lg text-xs sm:text-sm font-medium whitespace-nowrap transition-all shadow-[0_4px_12px_rgba(16,185,129,0.2)] border border-emerald-500/20 hover:bg-emerald-700 hover:shadow-[0_6px_16px_rgba(16,185,129,0.3)] hover:border-emerald-400/30 flex items-center justify-center"
+                                whileHover={{ scale: 1.02 }}
+                                whileTap={{ scale: 0.98 }}
+                            >
+                                <span className="flex items-center">
+                                    <FaExpand className="mr-1.5 sm:mr-2 text-xs sm:text-sm" />
+                                    Explore Gallery
+                                    <span className="text-[10px] sm:text-xs text-emerald-100 ml-1.5">(गैलरी देखें)</span>
+                                </span>
+                            </motion.button>
                         </div>
                     </div>
                 </div>
 
                 {/* Gallery Grid */}
-                <div className="relative h-[400px] sm:h-[600px] md:h-[700px] lg:h-[800px] bg-white/80 backdrop-blur-sm rounded-xl shadow-[0_8px_30px_rgba(0,0,0,0.12)] border border-gray-100 overflow-hidden">
-                    <div className="h-full overflow-y-auto custom-scrollbar">
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-1.5 sm:gap-3 md:gap-4 p-1.5 sm:p-3 md:p-4">
+                <div className="relative h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] bg-white/80 backdrop-blur-sm rounded-xl shadow-[0_8px_30px_rgba(0,0,0,0.12)] border border-gray-100 overflow-hidden">
+                    <div className="h-full overflow-y-auto scrollbar-thin scrollbar-thumb-emerald-500 scrollbar-track-transparent hover:scrollbar-thumb-emerald-600">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3 md:gap-4 p-2 sm:p-3 md:p-4">
                             {filteredItems.map((item, index) => (
                                 <motion.div
                                     key={item.id}
@@ -102,15 +113,16 @@ const GallerySection = () => {
                                             src={item.imageUrl}
                                             alt={item.title}
                                             className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                                            loading="lazy"
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                            <div className="absolute bottom-0 left-0 p-1.5 sm:p-3 md:p-4">
+                                            <div className="absolute bottom-0 left-0 p-2 sm:p-3 md:p-4">
                                                 <h3 className="text-sm sm:text-base md:text-lg font-semibold text-white mb-0.5 sm:mb-1">
                                                     {item.title}
                                                     <span className="block text-[10px] sm:text-xs md:text-sm text-emerald-200">{item.titleHindi}</span>
                                                 </h3>
                                                 <p className="text-[10px] sm:text-xs md:text-sm text-gray-200 line-clamp-2">{item.description}</p>
-                                                <div className="absolute top-1.5 sm:top-3 md:top-4 right-1.5 sm:right-3 md:right-4 p-1 sm:p-1.5 md:p-2 bg-white/20 rounded-full backdrop-blur-sm shadow-[0_2px_8px_rgba(0,0,0,0.1)] border border-white/30">
+                                                <div className="absolute top-2 sm:top-3 md:top-4 right-2 sm:right-3 md:right-3  p-1 sm:p-1.5 md:p-2 bg-white/20 rounded-full backdrop-blur-sm shadow-[0_2px_8px_rgba(0,0,0,0.1)] border border-white/30">
                                                     <FaExpand className="text-white text-sm sm:text-base md:text-lg" />
                                                 </div>
                                             </div>
@@ -180,28 +192,29 @@ const GallerySection = () => {
 
 // Update custom scrollbar styles
 const styles = `
-.custom-scrollbar::-webkit-scrollbar {
+.scrollbar-none::-webkit-scrollbar {
+    display: none;
+}
+.scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.scrollbar-thin::-webkit-scrollbar {
     width: 4px;
 }
 @media (min-width: 640px) {
-    .custom-scrollbar::-webkit-scrollbar {
+    .scrollbar-thin::-webkit-scrollbar {
         width: 6px;
     }
 }
-@media (min-width: 1024px) {
-    .custom-scrollbar::-webkit-scrollbar {
-        width: 8px;
-    }
-}
-.custom-scrollbar::-webkit-scrollbar-track {
+.scrollbar-thin::-webkit-scrollbar-track {
     background: transparent;
 }
-.custom-scrollbar::-webkit-scrollbar-thumb {
+.scrollbar-thin::-webkit-scrollbar-thumb {
     background: #10b981;
     border-radius: 4px;
-    border: 2px solid white;
 }
-.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
     background: #059669;
 }
 `;

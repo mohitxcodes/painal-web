@@ -57,7 +57,7 @@ const HeroSection = () => {
     };
 
     return (
-        <div className="relative min-h-[85vh] sm:min-h-[90vh] py-8 sm:py-12 w-full">
+        <div className="relative min-h-[70vh] sm:min-h-[90vh] pt-8 sm:py-12 w-full">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 md:py-16">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12 items-center">
                     {/* Left Content */}
@@ -121,9 +121,9 @@ const HeroSection = () => {
                             {villageInfo.description}
                         </motion.p>
 
-                        {/* Village Stats - Single Line for Mobile */}
+                        {/* Village Stats - Compact Enhanced Design */}
                         <motion.div
-                            className="flex flex-wrap sm:grid sm:grid-cols-2 gap-3 sm:gap-6 py-4 overflow-x-auto sm:overflow-visible"
+                            className="grid grid-cols-2 sm:grid-cols-2 gap-2 sm:gap-3 py-4"
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.7 }}
@@ -131,24 +131,28 @@ const HeroSection = () => {
                             {villageInfo.stats.map((stat, index) => (
                                 <motion.div
                                     key={index}
-                                    className="relative flex-shrink-0 sm:flex-shrink w-[140px] sm:w-auto group"
-                                    whileHover={{ scale: 1.02 }}
+                                    className="relative group"
+                                    whileHover={{ scale: 1.01 }}
                                 >
-                                    <div className="flex items-center space-x-2 sm:space-x-3 p-2 rounded-lg hover:bg-emerald-50/50 transition-all duration-300 border border-transparent hover:border-emerald-200/50">
-                                        <div className={`p-1.5 sm:p-2 rounded-lg bg-${stat.color}-50 shadow-[0_2px_8px_rgba(16,185,129,0.1)] group-hover:shadow-[0_4px_12px_rgba(16,185,129,0.15)] transition-all duration-300 border border-${stat.color}-100/50`}>
-                                            <stat.icon className={`text-lg sm:text-xl text-${stat.color}-600`} />
+                                    <div className="flex items-center space-x-2.5 p-2 sm:p-2.5 rounded-lg transition-all duration-300">
+                                        <div className={`p-1.5 sm:p-2 rounded-lg bg-gradient-to-br from-${stat.color}-50/90 to-${stat.color}-50/50 backdrop-blur-sm shadow-[0_2px_6px_rgba(16,185,129,0.1)] group-hover:shadow-[0_3px_8px_rgba(16,185,129,0.15)] transition-all duration-300 border border-${stat.color}-100/50 flex-shrink-0`}>
+                                            <stat.icon className={`text-base sm:text-lg text-${stat.color}-600`} />
                                         </div>
-                                        <div>
-                                            <div className="flex items-baseline space-x-1 sm:space-x-2">
-                                                <p className="text-base sm:text-xl md:text-2xl font-bold text-gray-900">{stat.value}</p>
-                                                <div className="flex flex-col">
-                                                    <p className="text-[10px] sm:text-sm text-gray-600 font-medium leading-tight">{stat.label}</p>
-                                                    <p className="text-[8px] sm:text-xs text-emerald-600 leading-tight">{stat.labelHindi}</p>
+                                        <div className="min-w-0 flex-1">
+                                            <div className="flex flex-col">
+                                                <div className="flex items-baseline space-x-1.5">
+                                                    <p className="text-sm sm:text-base md:text-lg font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">{stat.value}</p>
+                                                    <div className="h-px flex-1 bg-gradient-to-r from-emerald-200/30 via-emerald-300/20 to-transparent group-hover:from-emerald-300/30 group-hover:via-emerald-400/20 transition-all duration-300"></div>
+                                                </div>
+                                                <div className="flex items-center space-x-1.5 mt-0.5">
+                                                    <p className="text-[10px] sm:text-xs text-gray-600 font-medium leading-tight tracking-wide">{stat.label}</p>
+                                                    <span className="text-[8px] sm:text-[10px] text-emerald-600/80">•</span>
+                                                    <p className="text-[8px] sm:text-[10px] text-emerald-600 leading-tight tracking-wide">{stat.labelHindi}</p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="absolute -bottom-2 left-0 w-full h-px bg-gradient-to-r from-transparent via-emerald-200 to-transparent group-hover:via-emerald-300 transition-all duration-300"></div>
+                                    <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-emerald-50/0 via-emerald-50/0 to-emerald-50/0 group-hover:from-emerald-50/5 group-hover:via-emerald-50/0 group-hover:to-emerald-50/0 transition-all duration-300 pointer-events-none"></div>
                                 </motion.div>
                             ))}
                         </motion.div>
