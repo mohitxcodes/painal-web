@@ -7,10 +7,6 @@ export interface IVillageMember {
     birthYear?: string;
     children: number[];
     parentId?: number;
-    spouse?: string;
-    spouseHindiName?: string;
-    occupation?: string;
-    occupationHindi?: string;
     profilePhoto?: string;
 }
 
@@ -20,7 +16,6 @@ export interface IFamilies {
     hindiName: string;
     head: string;
     headHindi: string;
-    children: number;
     familyMembers: IVillageMember[];
 
 }

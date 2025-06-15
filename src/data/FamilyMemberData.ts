@@ -9,7 +9,6 @@ export const families: IFamilies[] = [
         hindiName: "मोहित का परिवार",
         head: "Mohit Kumar",
         headHindi: "मोहित कुमार",
-        children: 4,
         familyMembers: mohitFamily
     },
     {
@@ -18,7 +17,6 @@ export const families: IFamilies[] = [
         hindiName: "मोहित का परिवार",
         head: "Ravi Singh",
         headHindi: "रवि सिंह",
-        children: 4,
         familyMembers: raviFamily,
     },
 ];

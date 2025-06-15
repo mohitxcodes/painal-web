@@ -4,925 +4,640 @@ export const mohitFamily: IVillageMember[] = [
     {
         "id": 1,
         "name": "Raja Ram Ray",
-        "hindiName": "Raja Ram \u0930\u093e\u092f",
+        "hindiName": "राजा राम राय",
         "birthYear": "Unavailable",
         "children": [2],
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 2,
         "name": "Unknown1",
-        "hindiName": "Unknown1",
+        "hindiName": "अज्ञात1",
         "birthYear": "Unavailable",
         "children": [3, 4, 5],
         "parentId": 1,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 3,
         "name": "Rajman Ray",
-        "hindiName": "Rajman \u0930\u093e\u092f",
+        "hindiName": "राजमन राय",
         "birthYear": "Unavailable",
         "children": [6],
         "parentId": 2,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 4,
         "name": "Unknown2",
-        "hindiName": "Unknown2",
+        "hindiName": "अज्ञात2",
         "birthYear": "Unavailable",
         "children": [],
         "parentId": 2,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 5,
         "name": "Balchan Ray",
-        "hindiName": "Balchan \u0930\u093e\u092f",
+        "hindiName": "बलचन राय",
         "birthYear": "Unavailable",
         "children": [],
         "parentId": 2,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 6,
         "name": "Ranjit Singh",
-        "hindiName": "Ranjit \u0938\u093f\u0902\u0939",
+        "hindiName": "रणजीत सिंह",
         "birthYear": "Unavailable",
         "children": [7],
         "parentId": 3,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 7,
         "name": "Harlal Singh",
-        "hindiName": "Harlal \u0938\u093f\u0902\u0939",
+        "hindiName": "हरलाल सिंह",
         "birthYear": "Unavailable",
         "children": [8, 9],
         "parentId": 6,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 8,
         "name": "Ratan Singh",
-        "hindiName": "Ratan \u0938\u093f\u0902\u0939",
+        "hindiName": "रतन सिंह",
         "birthYear": "Unavailable",
         "children": [10, 11, 12, 13],
         "parentId": 7,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 9,
         "name": "Raguvar Singh",
-        "hindiName": "Raguvar \u0938\u093f\u0902\u0939",
+        "hindiName": "रागुवर सिंह",
         "birthYear": "Unavailable",
         "children": [],
         "parentId": 7,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 10,
         "name": "Ramnewaj Singh",
-        "hindiName": "Ramnewaj \u0938\u093f\u0902\u0939",
+        "hindiName": "रामनवाज सिंह",
         "birthYear": "Unavailable",
         "children": [],
         "parentId": 8,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 11,
         "name": "Ayodhaja Singh",
-        "hindiName": "Ayodhaja \u0938\u093f\u0902\u0939",
+        "hindiName": "अयोधाजा सिंह",
         "birthYear": "Unavailable",
         "children": [],
         "parentId": 8,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 12,
         "name": "Ramweshar Singh",
-        "hindiName": "Ramweshar \u0938\u093f\u0902\u0939",
+        "hindiName": "रामवेशर सिंह",
         "birthYear": "Unavailable",
         "children": [14],
         "parentId": 8,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 13,
         "name": "Rambhajan Singh",
-        "hindiName": "Rambhajan \u0938\u093f\u0902\u0939",
+        "hindiName": "रामभजन सिंह",
         "birthYear": "Unavailable",
         "children": [15, 16, 17],
         "parentId": 8,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 14,
         "name": "Pardeep Singh",
-        "hindiName": "Pardeep \u0938\u093f\u0902\u0939",
+        "hindiName": "परदीप सिंह",
         "birthYear": "Unavailable",
         "children": [18, 19],
         "parentId": 12,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 15,
         "name": "Palak Singh",
-        "hindiName": "Palak \u0938\u093f\u0902\u0939",
+        "hindiName": "पलक सिंह",
         "birthYear": "Unavailable",
         "children": [20],
         "parentId": 13,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 16,
         "name": "Ganpati Singh",
-        "hindiName": "Ganpati \u0938\u093f\u0902\u0939",
+        "hindiName": "गणपति सिंह",
         "birthYear": "Unavailable",
         "children": [],
         "parentId": 13,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 17,
         "name": "Jeetwhan Singh",
-        "hindiName": "Jeetwhan \u0938\u093f\u0902\u0939",
+        "hindiName": "जीतवान सिंह",
         "birthYear": "Unavailable",
         "children": [],
         "parentId": 13,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 18,
         "name": "Rambrij Singh",
-        "hindiName": "Rambrij \u0938\u093f\u0902\u0939",
+        "hindiName": "रामबृज सिंह",
         "birthYear": "Unavailable",
         "children": [21, 22],
         "parentId": 14,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 19,
         "name": "Shivlal Singh",
-        "hindiName": "Shivlal \u0938\u093f\u0902\u0939",
+        "hindiName": "शिवलाल सिंह",
         "birthYear": "Unavailable",
         "children": [23, 24, 25, 26, 27],
         "parentId": 14,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 20,
         "name": "Bahadur Singh",
-        "hindiName": "Bahadur \u0938\u093f\u0902\u0939",
+        "hindiName": "बहादुर सिंह",
         "birthYear": "Unavailable",
         "children": [28],
         "parentId": 15,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 21,
         "name": "Chandeo Singh",
-        "hindiName": "Chandeo \u0938\u093f\u0902\u0939",
+        "hindiName": "चंदेओ सिंह",
         "birthYear": "Unavailable",
         "children": [29],
         "parentId": 18,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 22,
         "name": "Dhariskshan Singh",
-        "hindiName": "Dhariskshan \u0938\u093f\u0902\u0939",
+        "hindiName": "धरिक्षण सिंह",
         "birthYear": "Unavailable",
         "children": [30, 31],
         "parentId": 18,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 23,
         "name": "Baiju Singh",
-        "hindiName": "Baiju \u0938\u093f\u0902\u0939",
+        "hindiName": "बैजू सिंह",
         "birthYear": "Unavailable",
         "children": [32, 33, 34, 35],
         "parentId": 19,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 24,
         "name": "Awadesh Singh",
-        "hindiName": "Awadesh \u0938\u093f\u0902\u0939",
+        "hindiName": "अवधेश सिंह",
         "birthYear": "Unavailable",
         "children": [36],
         "parentId": 19,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 25,
         "name": "Narseh Singh",
-        "hindiName": "Narseh \u0938\u093f\u0902\u0939",
+        "hindiName": "नरसह सिंह",
         "birthYear": "Unavailable",
         "children": [37, 38],
         "parentId": 19,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 26,
         "name": "Suresh Singh",
-        "hindiName": "Suresh \u0938\u093f\u0902\u0939",
+        "hindiName": "सुरेश सिंह",
         "birthYear": "Unavailable",
         "children": [39, 40, 41],
         "parentId": 19,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 27,
         "name": "Umesh Singh",
-        "hindiName": "Umesh \u0938\u093f\u0902\u0939",
+        "hindiName": "उमेश सिंह",
         "birthYear": "Unavailable",
         "children": [42],
         "parentId": 19,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 28,
         "name": "Jitendar Singh",
-        "hindiName": "Jitendar \u0938\u093f\u0902\u0939",
+        "hindiName": "जितेंदर सिंह",
         "birthYear": "Unavailable",
         "children": [],
         "parentId": 20,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 29,
         "name": "Akhilesh Singh",
-        "hindiName": "Akhilesh \u0938\u093f\u0902\u0939",
+        "hindiName": "अखिलेश सिंह",
         "birthYear": "Unavailable",
         "children": [43, 44],
         "parentId": 21,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 30,
         "name": "Abhey Shankar",
-        "hindiName": "Abhey \u0936\u0902\u0915\u0930",
+        "hindiName": "अभय शंकर",
         "birthYear": "Unavailable",
         "children": [45, 46],
         "parentId": 22,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 31,
         "name": "Udhay Shankar",
-        "hindiName": "Udhay \u0936\u0902\u0915\u0930",
+        "hindiName": "उदय शंकर",
         "birthYear": "Unavailable",
         "children": [47],
         "parentId": 22,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 32,
         "name": "Rangnath Singh",
-        "hindiName": "Rangnath \u0938\u093f\u0902\u0939",
+        "hindiName": "रंगनाथ सिंह",
         "birthYear": "Unavailable",
         "children": [48],
         "parentId": 23,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 33,
         "name": "Jagnath Singh",
-        "hindiName": "Jagnath \u0938\u093f\u0902\u0939",
+        "hindiName": "जगनाथ सिंह",
         "birthYear": "Unavailable",
         "children": [49, 50],
         "parentId": 23,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 34,
         "name": "Binay Kumar",
-        "hindiName": "Binay \u0915\u0941\u092e\u093e\u0930",
+        "hindiName": "बिनय कुमार",
         "birthYear": "Unavailable",
         "children": [51],
         "parentId": 23,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 35,
         "name": "Bipin Kumar",
-        "hindiName": "Bipin \u0915\u0941\u092e\u093e\u0930",
+        "hindiName": "बिपिन कुमार",
         "birthYear": "Unavailable",
         "children": [52, 53],
         "parentId": 23,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 36,
         "name": "Ravi Nandan",
-        "hindiName": "Ravi Nandan",
+        "hindiName": "रवि नंदन",
         "birthYear": "Unavailable",
         "children": [54, 55],
         "parentId": 24,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 37,
         "name": "Prenath Singh",
-        "hindiName": "Prenath \u0938\u093f\u0902\u0939",
+        "hindiName": "प्रेमनाथ सिंह",
         "birthYear": "Unavailable",
         "children": [56, 57],
         "parentId": 25,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 38,
         "name": "Priyanath Singh",
-        "hindiName": "Priyanath \u0938\u093f\u0902\u0939",
+        "hindiName": "प्रियनाथ सिंह",
         "birthYear": "Unavailable",
         "children": [58],
         "parentId": 25,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 39,
         "name": "Sambhu Nath",
-        "hindiName": "Sambhu \u0928\u093e\u0925",
+        "hindiName": "शंभू नाथ",
         "birthYear": "Unavailable",
         "children": [55],
         "parentId": 26,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 40,
         "name": "Sankar Nath",
-        "hindiName": "Sankar \u0928\u093e\u0925",
+        "hindiName": "शंकर नाथ",
         "birthYear": "Unavailable",
         "children": [59],
         "parentId": 26,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 41,
         "name": "Sasi Bhushan",
-        "hindiName": "Sasi Bhushan",
+        "hindiName": "सासी भूषण",
         "birthYear": "Unavailable",
         "children": [60],
         "parentId": 26,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 42,
         "name": "Sabhajeet Kumar",
-        "hindiName": "Sabhajeet \u0915\u0941\u092e\u093e\u0930",
+        "hindiName": "सभाजीत कुमार",
         "birthYear": "Unavailable",
         "children": [61],
         "parentId": 27,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 43,
         "name": "Aditya Kumar",
-        "hindiName": "Aditya \u0915\u0941\u092e\u093e\u0930",
+        "hindiName": "आदित्य कुमार",
         "birthYear": "Unavailable",
         "children": [],
         "parentId": 29,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 44,
         "name": "Bhashkar",
-        "hindiName": "Bhashkar",
+        "hindiName": "भास्कर",
         "birthYear": "Unavailable",
         "children": [],
         "parentId": 29,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 45,
         "name": "Aniket Kumar",
-        "hindiName": "Aniket \u0915\u0941\u092e\u093e\u0930",
+        "hindiName": "अनिकेत कुमार",
         "birthYear": "Unavailable",
         "children": [],
         "parentId": 30,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 46,
         "name": "Anurag Bhaskar",
-        "hindiName": "Anurag \u092d\u093e\u0938\u094d\u0915\u0930",
+        "hindiName": "अनुराग भास्कर",
         "birthYear": "Unavailable",
         "children": [],
         "parentId": 30,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 47,
         "name": "Rishikesh Kumar",
-        "hindiName": "Rishikesh \u0915\u0941\u092e\u093e\u0930",
+        "hindiName": "ऋषिकेश कुमार",
         "birthYear": "Unavailable",
         "children": [],
         "parentId": 31,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 48,
         "name": "Nitiesh Kumar",
-        "hindiName": "Nitiesh \u0915\u0941\u092e\u093e\u0930",
+        "hindiName": "नितीश कुमार",
         "birthYear": "Unavailable",
         "children": [],
         "parentId": 32,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 49,
         "name": "Amarnath",
-        "hindiName": "Amarnath",
+        "hindiName": "अमरनाथ",
         "birthYear": "Unavailable",
         "children": [],
         "parentId": 33,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 50,
         "name": "Samar Nath",
-        "hindiName": "Samar \u0928\u093e\u0925",
+        "hindiName": "समर नाथ",
         "birthYear": "Unavailable",
         "children": [],
         "parentId": 33,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 51,
         "name": "Ritik Kumar",
-        "hindiName": "Ritik \u0915\u0941\u092e\u093e\u0930",
+        "hindiName": "रितिक कुमार",
         "birthYear": "Unavailable",
         "children": [],
         "parentId": 34,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 52,
         "name": "Rajnish Kumar",
-        "hindiName": "Rajnish \u0915\u0941\u092e\u093e\u0930",
+        "hindiName": "रजनीश कुमार",
         "birthYear": "Unavailable",
         "children": [],
         "parentId": 35,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 53,
         "name": "Awnish Kumar",
-        "hindiName": "Awnish \u0915\u0941\u092e\u093e\u0930",
+        "hindiName": "अवनीश कुमार",
         "birthYear": "Unavailable",
         "children": [],
         "parentId": 35,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 54,
         "name": "Papu Kumar",
-        "hindiName": "Papu \u0915\u0941\u092e\u093e\u0930",
+        "hindiName": "पप्पू कुमार",
         "birthYear": "Unavailable",
         "children": [],
         "parentId": 36,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 55,
         "name": "Abhishek Kumar",
-        "hindiName": "Abhishek \u0915\u0941\u092e\u093e\u0930",
+        "hindiName": "अभिषेक कुमार",
         "birthYear": "Unavailable",
         "children": [],
         "parentId": 39,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 56,
         "name": "Pankaj Kumar",
-        "hindiName": "Pankaj \u0915\u0941\u092e\u093e\u0930",
+        "hindiName": "पंकज कुमार",
         "birthYear": "Unavailable",
         "children": [],
         "parentId": 37,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 57,
         "name": "Santosh Kumar",
-        "hindiName": "Santosh \u0915\u0941\u092e\u093e\u0930",
+        "hindiName": "संतोष कुमार",
         "birthYear": "Unavailable",
         "children": [],
         "parentId": 37,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 58,
         "name": "Suraykant Kumar",
-        "hindiName": "Suraykant \u0915\u0941\u092e\u093e\u0930",
+        "hindiName": "सूर्यकांत कुमार",
         "birthYear": "Unavailable",
         "children": [],
         "parentId": 38,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 59,
         "name": "Rohit Kumar",
-        "hindiName": "Rohit \u0915\u0941\u092e\u093e\u0930",
+        "hindiName": "रोहित कुमार",
         "birthYear": "Unavailable",
         "children": [],
         "parentId": 40,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 60,
         "name": "Ashutosh Kumar",
-        "hindiName": "Ashutosh \u0915\u0941\u092e\u093e\u0930",
+        "hindiName": "आशुतोष कुमार",
         "birthYear": "Unavailable",
         "children": [],
         "parentId": 41,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 61,
         "name": "Mohit Kumar",
-        "hindiName": "Mohit \u0915\u0941\u092e\u093e\u0930",
-        "birthYear": "Unavailable",
+        "hindiName": "मोहित कुमार",
+        "birthYear": "2006",
         "children": [],
         "parentId": 42,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Unavailable",
-        "occupationHindi": "Unavailable",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
-    },
-
-]
+        "profilePhoto": "family-img/mohit-family/mohit.jpeg"
+    }
+];
 
 export const raviFamily: IVillageMember[] = [
     {
         "id": 1,
         "name": "Ravi Sharma",
-        "hindiName": "Ravi \u0936\u0930\u094d\u092e\u093e",
+        "hindiName": "रवि शर्मा",
         "birthYear": "1960",
         "children": [2, 3],
-        "spouse": "Lakshmi Sharma",
-        "spouseHindiName": "\u0932\u0915\u094d\u0937\u094d\u092e\u0940 \u0936\u0930\u094d\u092e\u093e",
-        "occupation": "Farmer",
-        "occupationHindi": "\u0915\u093f\u0938\u093e\u0928",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 2,
         "name": "Rajesh Sharma",
-        "hindiName": "Rajesh \u0936\u0930\u094d\u092e\u093e",
+        "hindiName": "राजेश शर्मा",
         "birthYear": "1985",
         "children": [4, 5],
         "parentId": 1,
-        "spouse": "Priya Sharma",
-        "spouseHindiName": "\u092a\u094d\u0930\u093f\u092f\u093e \u0936\u0930\u094d\u092e\u093e",
-        "occupation": "Teacher",
-        "occupationHindi": "\u0936\u093f\u0915\u094d\u0937\u0915",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 3,
         "name": "Suresh Sharma",
-        "hindiName": "Suresh \u0936\u0930\u094d\u092e\u093e",
+        "hindiName": "सुरेश शर्मा",
         "birthYear": "1988",
         "children": [6],
         "parentId": 1,
-        "spouse": "Meena Sharma",
-        "spouseHindiName": "\u092e\u0940\u0928\u093e \u0936\u0930\u094d\u092e\u093e",
-        "occupation": "Engineer",
-        "occupationHindi": "\u0907\u0902\u091c\u0940\u0928\u093f\u092f\u0930",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 4,
         "name": "Rahul Sharma",
-        "hindiName": "Rahul \u0936\u0930\u094d\u092e\u093e",
+        "hindiName": "राहुल शर्मा",
         "birthYear": "2010",
         "children": [],
         "parentId": 2,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Student",
-        "occupationHindi": "\u0935\u093f\u0926\u094d\u092f\u093e\u0930\u094d\u0925\u0940",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 5,
         "name": "Riya Sharma",
-        "hindiName": "Riya \u0936\u0930\u094d\u092e\u093e",
+        "hindiName": "रिया शर्मा",
         "birthYear": "2012",
         "children": [],
         "parentId": 2,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Student",
-        "occupationHindi": "\u0935\u093f\u0926\u094d\u092f\u093e\u0930\u094d\u0925\u0940",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 6,
         "name": "Aryan Sharma",
-        "hindiName": "Aryan \u0936\u0930\u094d\u092e\u093e",
+        "hindiName": "आर्यन शर्मा",
         "birthYear": "2015",
         "children": [],
         "parentId": 3,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Student",
-        "occupationHindi": "\u0935\u093f\u0926\u094d\u092f\u093e\u0930\u094d\u0925\u0940",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 7,
         "name": "Ramesh Sharma",
-        "hindiName": "Ramesh \u0936\u0930\u094d\u092e\u093e",
+        "hindiName": "रमेश शर्मा",
         "birthYear": "1962",
         "children": [8, 9],
-        "spouse": "Sunita Sharma",
-        "spouseHindiName": "\u0938\u0941\u0928\u093f\u0924\u093e \u0936\u0930\u094d\u092e\u093e",
-        "occupation": "Shop Owner",
-        "occupationHindi": "\u0926\u0941\u0915\u093e\u0928\u0926\u093e\u0930",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 8,
         "name": "Neha Sharma",
-        "hindiName": "Neha \u0936\u0930\u094d\u092e\u093e",
+        "hindiName": "नेहा शर्मा",
         "birthYear": "1990",
         "children": [10],
         "parentId": 7,
-        "spouse": "Amit Kumar",
-        "spouseHindiName": "\u0905\u092e\u093f\u0924 \u0915\u0941\u092e\u093e\u0930",
-        "occupation": "Doctor",
-        "occupationHindi": "\u0921\u0949\u0915\u094d\u091f\u0930",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 9,
         "name": "Vikram Sharma",
-        "hindiName": "Vikram \u0936\u0930\u094d\u092e\u093e",
+        "hindiName": "विक्रम शर्मा",
         "birthYear": "1992",
         "children": [],
         "parentId": 7,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Software Engineer",
-        "occupationHindi": "\u0938\u0949\u092b\u094d\u091f\u0935\u0947\u092f\u0930 \u0907\u0902\u091c\u0940\u0928\u093f\u092f\u0930",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     },
     {
         "id": 10,
         "name": "Arjun Kumar",
-        "hindiName": "Arjun \u0915\u0941\u092e\u093e\u0930",
+        "hindiName": "अर्जुन कुमार",
         "birthYear": "2018",
         "children": [],
         "parentId": 8,
-        "spouse": "Unavailable",
-        "spouseHindiName": "Unavailable",
-        "occupation": "Student",
-        "occupationHindi": "\u0935\u093f\u0926\u094d\u092f\u093e\u0930\u094d\u0925\u0940",
-        "profilePhoto": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1000"
+        "profilePhoto": ""
     }
 ];
